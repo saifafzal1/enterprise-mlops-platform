@@ -1,0 +1,5 @@
+outs:
+- md5: a3725d1e398e2d1f983b343f947bcb22
+  size: 20
+  hash: md5
+  path: test_bridge.txt
