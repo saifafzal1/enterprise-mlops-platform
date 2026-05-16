@@ -1,0 +1,1 @@
+.venv/\nmlruns/\n__pycache__/\n*.pyc\nmodels/*.h5\nmodels/*.pkl\nmodels/*.pt\n.DS_Store
