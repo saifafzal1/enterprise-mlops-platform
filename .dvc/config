@@ -1,0 +1,5 @@
+[core]
+    remote = macb-ssh
+['remote "macb-ssh"']
+    url = ssh://nadiaashfaq@192.168.1.178/Users/nadiaashfaq/dvc-remote
+    keyfile = /Users/saif.afzal/.ssh/id_ed25519
