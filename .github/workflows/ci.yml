@@ -10,6 +10,9 @@ jobs:
   test-and-build:
     runs-on: ubuntu-latest
 
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -27,20 +30,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run tests
-        run: pytest tests/ -v --tb=short
-
-      - name: Smoke train heart disease (1 epoch equivalent)
+      - name: Smoke train heart disease model
         run: |
           mkdir -p data/raw models
           python -c "
-          import pandas as pd, numpy as np, os
+          import pandas as pd, numpy as np
           cols = ['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal','target']
           df = pd.DataFrame(np.random.rand(50, 14), columns=cols)
           df['target'] = (df['target'] > 0.5).astype(int)
           df.to_csv('data/raw/heart_disease.csv', index=False, header=False)
           "
-          EPOCHS=1 python src/heart_disease/train.py
+          python src/heart_disease/train.py
+
+      - name: Run tests
+        run: pytest tests/ -v --tb=short
 
       - name: Login to Docker Hub
         if: github.ref == 'refs/heads/main'
@@ -64,5 +67,5 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           docker run -d -p 8000:8000 saifafzal1/enterprise-mlops:latest
-          sleep 10
+          sleep 15
           curl --fail http://localhost:8000/health

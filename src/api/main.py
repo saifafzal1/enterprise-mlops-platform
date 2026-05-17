@@ -64,6 +64,9 @@ def health():
 
 @app.post("/predict-image")
 async def predict_image(file: UploadFile = File(...)):
+    if img_model is None:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=503, detail="Image model not loaded")
     img    = Image.open(io.BytesIO(await file.read())).convert("RGB")
     tensor = IMG_TRANSFORM(img).unsqueeze(0)
     with torch.no_grad():
@@ -74,6 +77,9 @@ async def predict_image(file: UploadFile = File(...)):
 
 @app.post("/predict-heart")
 def predict_heart(features: HeartFeatures):
+    if heart_bundle is None:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=503, detail="Heart model not loaded")
     X    = np.array([[features.age, features.sex, features.cp, features.trestbps,
                       features.chol, features.fbs, features.restecg, features.thalach,
                       features.exang, features.oldpeak, features.slope, features.ca, features.thal]])

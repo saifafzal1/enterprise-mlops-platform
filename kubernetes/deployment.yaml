@@ -17,6 +17,7 @@ spec:
       containers:
       - name: mlops-api
         image: saifafzal1/enterprise-mlops:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8000
         resources:
