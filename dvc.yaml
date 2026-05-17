@@ -1,0 +1,26 @@
+stages:
+  preprocess_images:
+    cmd: python src/image_classification/preprocess.py
+    deps:
+      - data/raw/dogs-vs-cats
+      - src/image_classification/preprocess.py
+    outs:
+      - data/processed/cats_dogs
+
+  train_image:
+    cmd: python src/image_classification/train.py
+    deps:
+      - data/processed/cats_dogs
+      - src/image_classification/train.py
+    outs:
+      - models/cats_vs_dogs.pt
+    metrics:
+      - mlruns/
+
+  train_heart:
+    cmd: python src/heart_disease/train.py
+    deps:
+      - data/raw/heart_disease.csv
+      - src/heart_disease/train.py
+    outs:
+      - models/heart_disease.pkl
