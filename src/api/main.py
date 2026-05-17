@@ -1,16 +1,17 @@
-import io, os
+import io, os, subprocess, sys
 import torch
 import torch.nn as nn
 import joblib
 import numpy as np
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
+from typing import List, Optional
 from torchvision import transforms, models
 from PIL import Image
 from prometheus_fastapi_instrumentator import Instrumentator
-from prometheus_client import Gauge
+from prometheus_client import Gauge, Counter, Histogram
 
-app = FastAPI(title="Enterprise MLOps API", version="1.0.0")
+app = FastAPI(title="Enterprise MLOps API", version="2.0.0")
 Instrumentator().instrument(app).expose(app)
 
 # Required by the FastAPI Observability dashboard variable query
@@ -83,7 +84,6 @@ async def predict_image(file: UploadFile = File(...)):
 @app.post("/predict-heart")
 def predict_heart(features: HeartFeatures):
     if heart_bundle is None:
-        from fastapi import HTTPException
         raise HTTPException(status_code=503, detail="Heart model not loaded")
     X    = np.array([[features.age, features.sex, features.cp, features.trestbps,
                       features.chol, features.fbs, features.restecg, features.thalach,
@@ -96,3 +96,80 @@ def predict_heart(features: HeartFeatures):
         "probability": round(float(prob), 4),
         "label":       "disease" if pred == 1 else "no disease",
     }
+
+
+# ── Agentic SLM endpoints ─────────────────────────────────────────────────────
+
+_slm_generation_total    = Counter("slm_generation_total",    "SLM script generation requests",  ["framework", "model"])
+_slm_bmad_iterations     = Histogram("slm_bmad_iterations",   "BMAD correction iterations",      ["framework"])
+_slm_validation_pass     = Counter("slm_validation_pass",     "BMAD validation passes",          ["framework"])
+
+AGENTIC_MODELS_DIR = os.environ.get("AGENTIC_MODELS_DIR", "models/agentic")
+BMAD_URL           = os.environ.get("BMAD_URL", "http://bmad-validator:8001")
+
+_slm_models: dict = {}
+
+def _get_slm(model_key: str):
+    """Lazy-load fine-tuned SLM adapter."""
+    if model_key in _slm_models:
+        return _slm_models[model_key]
+    model_dir = os.path.join(AGENTIC_MODELS_DIR, model_key)
+    if not os.path.isdir(model_dir):
+        return None
+    _slm_models[model_key] = model_dir
+    return model_dir
+
+
+class GenerateRequest(BaseModel):
+    story: str
+    acceptance_criteria: Optional[List[str]] = []
+    model: Optional[str] = "phi3"
+    use_bmad: Optional[bool] = True
+    max_bmad_iterations: Optional[int] = 3
+
+
+@app.post("/generate-cypress")
+def generate_cypress(req: GenerateRequest):
+    model_dir = _get_slm(f"{req.model}_cypress")
+    if model_dir is None:
+        raise HTTPException(status_code=503,
+            detail=f"Model {req.model}_cypress not loaded. Run fine-tuning first.")
+    _slm_generation_total.labels(framework="cypress", model=req.model).inc()
+    from src.agentic.bmad_agent import BMADAgent
+    agent = BMADAgent(model_dir=model_dir, framework="cypress",
+                      bmad_url=BMAD_URL, max_iterations=req.max_bmad_iterations)
+    result = agent.run(req.story, req.acceptance_criteria) if req.use_bmad \
+             else {"final_script": agent.generate(req.story, req.acceptance_criteria),
+                   "valid": None, "iterations": 0}
+    _slm_bmad_iterations.labels(framework="cypress").observe(result.get("iterations", 0))
+    if result.get("valid"):
+        _slm_validation_pass.labels(framework="cypress").inc()
+    return result
+
+
+@app.post("/generate-playwright")
+def generate_playwright(req: GenerateRequest):
+    model_dir = _get_slm(f"{req.model}_playwright")
+    if model_dir is None:
+        raise HTTPException(status_code=503,
+            detail=f"Model {req.model}_playwright not loaded. Run fine-tuning first.")
+    _slm_generation_total.labels(framework="playwright", model=req.model).inc()
+    from src.agentic.bmad_agent import BMADAgent
+    agent = BMADAgent(model_dir=model_dir, framework="playwright",
+                      bmad_url=BMAD_URL, max_iterations=req.max_bmad_iterations)
+    result = agent.run(req.story, req.acceptance_criteria) if req.use_bmad \
+             else {"final_script": agent.generate(req.story, req.acceptance_criteria),
+                   "valid": None, "iterations": 0}
+    _slm_bmad_iterations.labels(framework="playwright").observe(result.get("iterations", 0))
+    if result.get("valid"):
+        _slm_validation_pass.labels(framework="playwright").inc()
+    return result
+
+
+@app.get("/agentic/models")
+def list_agentic_models():
+    available = []
+    for key in ["phi3_cypress", "phi3_playwright", "gemma4_cypress", "gemma4_playwright"]:
+        model_dir = os.path.join(AGENTIC_MODELS_DIR, key)
+        available.append({"model": key, "ready": os.path.isdir(model_dir)})
+    return {"models": available}

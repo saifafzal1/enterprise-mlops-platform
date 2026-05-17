@@ -1,0 +1,11 @@
+{
+  "name": "bmad-validator",
+  "version": "1.0.0",
+  "description": "BMAD test script syntax validator service",
+  "main": "validator.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "@playwright/test": "^1.44.0",
+    "acorn": "^8.11.3"
+  }
+}
