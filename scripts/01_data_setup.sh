@@ -10,8 +10,13 @@ source .venv/bin/activate
 echo "============================================"
 echo " STEP 1/5 — Downloading Cats vs Dogs"
 echo "============================================"
-kaggle datasets download -d salader/dogs-vs-cats -p data/raw/ --unzip
-echo "  Done. Files: $(ls data/raw/dogs-vs-cats/train/ | wc -l | tr -d ' ') images"
+mkdir -p data/raw/dogs-vs-cats
+ZIP="data/raw/cats_and_dogs.zip"
+curl -L "https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip" -o "$ZIP"
+unzip -q "$ZIP" -d data/raw/
+mv data/raw/cats_and_dogs_filtered/* data/raw/dogs-vs-cats/
+rm -rf data/raw/cats_and_dogs_filtered "$ZIP"
+echo "  Done. Train: $(find data/raw/dogs-vs-cats/train -name '*.jpg' | wc -l | tr -d ' ') images"
 
 echo "============================================"
 echo " STEP 2/5 — Downloading Heart Disease CSV"
