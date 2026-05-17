@@ -11,11 +11,54 @@ echo "============================================"
 echo " STEP 1/5 — Downloading Cats vs Dogs"
 echo "============================================"
 mkdir -p data/raw/dogs-vs-cats
-ZIP="data/raw/cats_and_dogs.zip"
-curl -L "https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip" -o "$ZIP"
-unzip -q "$ZIP" -d data/raw/
-mv data/raw/cats_and_dogs_filtered/* data/raw/dogs-vs-cats/
-rm -rf data/raw/cats_and_dogs_filtered "$ZIP"
+python3 - <<'PYEOF'
+import requests, zipfile, shutil, pathlib
+
+# Microsoft-hosted original Cats vs Dogs dataset (no auth required)
+url  = "https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_5340.zip"
+dest = pathlib.Path("data/raw/cats_and_dogs.zip")
+
+print(f"  Downloading Microsoft Cats vs Dogs (~786MB) ...")
+with requests.get(url, stream=True) as r:
+    r.raise_for_status()
+    total = int(r.headers.get("content-length", 0))
+    downloaded = 0
+    with open(dest, "wb") as f:
+        for chunk in r.iter_content(chunk_size=1024 * 1024):
+            f.write(chunk)
+            downloaded += len(chunk)
+            if total:
+                print(f"  {downloaded/1e6:.0f}/{total/1e6:.0f} MB", end="\r")
+print(f"\n  Downloaded {dest.stat().st_size / 1e6:.1f} MB")
+
+print("  Extracting...")
+with zipfile.ZipFile(dest) as z:
+    z.extractall("data/raw/")
+dest.unlink()
+
+# Organise into train/val split with cats/ dogs/ subdirs
+import random, os
+random.seed(42)
+raw     = pathlib.Path("data/raw/PetImages")
+out     = pathlib.Path("data/raw/dogs-vs-cats")
+for split in ("train", "val"):
+    for cls in ("cats", "dogs"):
+        (out / split / cls).mkdir(parents=True, exist_ok=True)
+
+for cls, src_dir in [("cats", "Cat"), ("dogs", "Dog")]:
+    files = [f for f in (raw / src_dir).glob("*.jpg") if f.stat().st_size > 1000]
+    random.shuffle(files)
+    n_val = int(len(files) * 0.15)
+    for i, f in enumerate(files):
+        split = "val" if i < n_val else "train"
+        shutil.copy(f, out / split / cls / f.name)
+
+shutil.rmtree(raw)
+for split in ("train","val"):
+    for cls in ("cats","dogs"):
+        n = len(list((out/split/cls).glob("*.jpg")))
+        print(f"  {split}/{cls}: {n} images")
+PYEOF
 echo "  Done. Train: $(find data/raw/dogs-vs-cats/train -name '*.jpg' | wc -l | tr -d ' ') images"
 
 echo "============================================"

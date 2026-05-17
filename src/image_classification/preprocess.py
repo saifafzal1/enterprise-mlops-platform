@@ -10,21 +10,19 @@ from pathlib import Path
 RAW_DIR = Path("data/raw/dogs-vs-cats")
 OUT_DIR = Path("data/processed/cats_dogs")
 
-SPLIT_MAP = {
-    "train":      "train",
-    "validation": "val",
-}
-
 def main():
-    for raw_split, out_split in SPLIT_MAP.items():
+    # Microsoft dataset is already split by 01_data_setup.sh — just symlink to processed/
+    for split in ("train", "val"):
         for cls in ("cats", "dogs"):
-            src = RAW_DIR / raw_split / cls
-            dst = OUT_DIR / out_split / cls
+            src = RAW_DIR / split / cls
+            dst = OUT_DIR / split / cls
+            if not src.exists():
+                raise FileNotFoundError(f"Missing: {src} — run 01_data_setup.sh first")
             if dst.exists():
                 shutil.rmtree(dst)
             shutil.copytree(src, dst)
             n = len(list(dst.glob("*.jpg")))
-            print(f"{out_split}/{cls}: {n} images")
+            print(f"{split}/{cls}: {n} images")
 
 if __name__ == "__main__":
     main()
