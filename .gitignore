@@ -1,1 +1,11 @@
-.venv/\nmlruns/\n__pycache__/\n*.pyc\nmodels/*.h5\nmodels/*.pkl\nmodels/*.pt\n.DS_Store
+.venv/
+mlruns/
+__pycache__/
+*.pyc
+models/*.h5
+models/*.pkl
+models/*.pt
+.DS_Store
+data/raw/
+data/processed/
+mlartifacts/

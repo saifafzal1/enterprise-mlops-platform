@@ -61,6 +61,9 @@ rsync -av \
   --exclude='*.pyc' \
   "$PROJECT/" \
   mac-b:~/Documents/enterprise-mlops-platform-sync/
+# models are in .gitignore so rsync skips them — copy explicitly
+scp "$PROJECT/models/cats_vs_dogs.pt" "$PROJECT/models/heart_disease.pkl" \
+  mac-b:~/Documents/enterprise-mlops-platform-sync/models/
 echo "  Sync complete"
 
 echo ""
