@@ -1,0 +1,12 @@
+groups:
+  - name: fastapi_aliases
+    interval: 15s
+    rules:
+      - record: fastapi_requests_total
+        expr: http_requests_total
+      - record: fastapi_requests_duration_seconds_sum
+        expr: http_request_duration_seconds_sum
+      - record: fastapi_requests_duration_seconds_count
+        expr: http_request_duration_seconds_count
+      - record: fastapi_requests_duration_seconds_bucket
+        expr: http_request_duration_seconds_bucket

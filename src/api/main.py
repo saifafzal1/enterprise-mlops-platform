@@ -8,9 +8,14 @@ from pydantic import BaseModel
 from torchvision import transforms, models
 from PIL import Image
 from prometheus_fastapi_instrumentator import Instrumentator
+from prometheus_client import Gauge
 
 app = FastAPI(title="Enterprise MLOps API", version="1.0.0")
 Instrumentator().instrument(app).expose(app)
+
+# Required by the FastAPI Observability dashboard variable query
+_app_info = Gauge("fastapi_app_info", "FastAPI application info", ["app_name"])
+_app_info.labels(app_name="mlops-api").set(1)
 
 LABELS = ["cat", "dog"]
 
