@@ -60,12 +60,12 @@ jobs:
           file: docker/Dockerfile
           push: true
           tags: |
-            saifafzal1/enterprise-mlops:${{ github.sha }}
-            saifafzal1/enterprise-mlops:latest
+            tpg12345/enterprise-mlops:${{ github.sha }}
+            tpg12345/enterprise-mlops:latest
 
       - name: Smoke test container
         if: github.ref == 'refs/heads/main'
         run: |
-          docker run -d -p 8000:8000 saifafzal1/enterprise-mlops:latest
+          docker run -d -p 8000:8000 tpg12345/enterprise-mlops:latest
           sleep 15
           curl --fail http://localhost:8000/health
