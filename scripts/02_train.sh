@@ -44,9 +44,9 @@ echo "  Image model saved → models/cats_vs_dogs.pt"
 echo "============================================"
 echo " STEP 6/7 — DVC tracking trained models"
 echo "============================================"
-dvc add models/cats_vs_dogs.pt models/heart_disease.pkl
-git add models/.gitignore models/cats_vs_dogs.pt.dvc models/heart_disease.pkl.dvc
-git commit -m "model: add trained artifacts"
+dvc commit models/cats_vs_dogs.pt models/heart_disease.pkl -f
+git add dvc.lock dvc.yaml
+git diff --cached --quiet || git commit -m "model: update trained artifacts"
 dvc push
 git push origin main
 echo "  Models pushed to DVC remote and GitHub"
