@@ -1,0 +1,389 @@
+{
+  "model": "mistral-7b",
+  "framework": "playwright",
+  "metrics": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "results": [
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 4
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 4
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 1
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 4
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 4
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 1
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 1
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    },
+    {
+      "generated": "",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 3
+    }
+  ]
+}

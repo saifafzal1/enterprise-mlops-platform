@@ -29,7 +29,7 @@ for FRAMEWORK in cypress playwright; do
     --framework "$FRAMEWORK" \
     --test-data  "$DATA/${FRAMEWORK}_test.jsonl" \
     --output-dir "$RESULTS/$FRAMEWORK" \
-    --models "gpt-4o-mini,claude-haiku-4-5,gemini-1.5-flash" \
+    --models "gpt-4o-mini,claude-haiku-4-5,phi3-mini-zeroshot,gemma4-zeroshot" \
     --mlflow-experiment "agentic_baselines" \
     2>&1 | tee -a "$LOG"
 done

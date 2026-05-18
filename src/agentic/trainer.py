@@ -68,7 +68,7 @@ def _try_mlx_finetune(model_id, train_data, test_data, output_dir, epochs, lr, b
                 f.write(json.dumps(d) + "\n")
 
         cmd = [
-            sys.executable, "-m", "mlx_lm.lora",
+            sys.executable, "-m", "mlx_lm", "lora",
             "--model", model_id,
             "--train",
             "--data", tmp,
@@ -77,7 +77,7 @@ def _try_mlx_finetune(model_id, train_data, test_data, output_dir, epochs, lr, b
             "--learning-rate", str(lr),
             "--adapter-path", output_dir,
             "--max-seq-length", str(max_length),
-            "--lora-layers", "16",
+            "--num-layers", "16",
         ]
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
@@ -104,10 +104,10 @@ def _hf_finetune(model_id, train_data, test_data, output_dir, epochs, lr, batch_
 
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
-        torch_dtype=torch.float16,
+        torch_dtype=torch.float32,
         trust_remote_code=True,
-        device_map="auto" if device == "mps" else None,
-    )
+        attn_implementation="eager",
+    ).to(device)
 
     lora_cfg = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
@@ -161,23 +161,31 @@ def _compute_f1(model_dir, test_pairs, framework):
         return {"precision": 0.0, "recall": 0.0, "f1": 0.0}
 
 
+def _get_base_model(adapter_dir):
+    """Read base model ID from adapter_config.json."""
+    cfg_path = os.path.join(adapter_dir, "adapter_config.json")
+    if os.path.exists(cfg_path):
+        with open(cfg_path) as f:
+            return json.load(f).get("model", adapter_dir)
+    return adapter_dir
+
+
 def _generate_batch(model_dir, pairs, framework, max_new_tokens=512):
     """Generate scripts for a list of pairs using the fine-tuned model."""
     try:
-        import subprocess, sys, tempfile, json as _json
+        import subprocess, sys
+        base_model = _get_base_model(model_dir)
         results = []
         for p in pairs:
             criteria = "\n".join(f"- {c}" for c in p.get("acceptance_criteria", []))
             prompt = INFERENCE_TEMPLATE.format(
                 framework=framework, story=p["story"], criteria=criteria)
-            tmp_prompt = tempfile.mktemp(suffix=".txt")
-            with open(tmp_prompt, "w") as f:
-                f.write(prompt)
-            cmd = [sys.executable, "-m", "mlx_lm.generate",
-                   "--model", model_dir,
+            cmd = [sys.executable, "-m", "mlx_lm", "generate",
+                   "--model", base_model,
+                   "--adapter-path", model_dir,
                    "--prompt", prompt,
                    "--max-tokens", str(max_new_tokens)]
-            res = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+            res = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             results.append(res.stdout.strip())
         return results
     except Exception as e:
@@ -221,10 +229,17 @@ def finetune(model_id, framework, train_path, test_path, output_dir,
             metrics = _compute_f1(output_dir, test_pairs, framework)
             mlflow.log_metrics(metrics)
             print(f"F1: {metrics['f1']:.4f}  P: {metrics['precision']:.4f}  R: {metrics['recall']:.4f}")
-            # Save metrics alongside adapter
             with open(os.path.join(output_dir, "metrics.json"), "w") as f:
                 json.dump({**metrics, "framework": framework, "model_id": model_id}, f, indent=2)
+            # Log adapter dir as artifact and register in Model Registry
             mlflow.log_artifact(output_dir)
+            model_name = run_name or f"{model_id.split('/')[-1]}_{framework}"
+            model_uri  = f"runs:/{mlflow.active_run().info.run_id}/artifacts/{os.path.basename(output_dir)}"
+            try:
+                mlflow.register_model(model_uri=model_uri, name=model_name)
+                print(f"Registered model '{model_name}' in MLflow Model Registry")
+            except Exception as e:
+                print(f"Model registration skipped: {e}")
         else:
             print(f"Training failed: {msg}")
 

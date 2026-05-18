@@ -1,0 +1,389 @@
+{
+  "model": "gemma4-zeroshot",
+  "framework": "cypress",
+  "metrics": {
+    "precision": 0.7538761904761905,
+    "recall": 0.9460238095238096,
+    "f1": 0.8180761904761905
+  },
+  "results": [
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 62.606 tokens-per-sec\nGeneration: 212 tokens, 26.686 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 90.284 tokens-per-sec\nGeneration: 212 tokens, 26.356 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Update Profile', () => {\n  it('Should update profile information', () => {\n    cy.visit('/profile'); // Assuming the profile page URL is /profile\n    cy.get('#firstName').type('John');\n    cy.get('#lastName').type('Doe');\n    cy.get('#email').type('john.doe@example.com');\n    cy.get('#saveButton').click();\n    cy.url().should('include', '/profile');\n    cy.get('#firstName').should('have.text', 'John');\n    cy.get('#lastName').should('have.text', 'Doe');\n    cy.get('#email').should('have.value', 'john.doe@example.com');\n  });\n});\n```\n==========\nPrompt: 98 tokens, 110.141 tokens-per-sec\nGeneration: 171 tokens, 27.043 tokens-per-sec\nPeak memory: 7.894 GB",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.5556,
+      "recall": 1.0,
+      "f1": 0.7143,
+      "gen_count": 9,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 118.315 tokens-per-sec\nGeneration: 212 tokens, 25.753 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Login with Invalid Credentials', () => {\n  it('Should display an error message for wrong password', () => {\n    cy.visit('/login');\n    cy.get('#username').type('validuser');\n    cy.get('#password').type('wrongpassword');\n    cy.get('#login-button').click();\n    cy.get('.error-message').should('be.visible');\n  });\n\n  it('Should stay on the login page after invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('#username').type('validuser');\n    cy.get('#password').type('wrongpassword');\n    cy.get('#login-button').click();\n    cy.url().should('include', '/login');\n  });\n});\n```\n==========\nPrompt: 103 tokens, 85.308 tokens-per-sec\nGeneration: 178 tokens, 26.728 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 0.6,
+      "recall": 1.0,
+      "f1": 0.75,
+      "gen_count": 10,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('User Account Creation', () => {\n  it('Should allow admin to fill new user form and save the account', () => {\n    cy.visit('/new-user'); // Assuming the URL for the new user form is /new-user\n\n    cy.get('#username').type('testuser');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#password').type('password123');\n    cy.get('#confirmPassword').type('password123');\n    cy.get('#submitButton').click();\n\n    cy.get('.success-message').should('be.visible').should('contain', 'User created successfully!');\n\n    // Optionally, verify the user is present in the system (e.g., by checking a table)\n    // cy.get('#user-table tbody tr').should('have.length.greaterThan', 0);\n  });\n});\n```\n==========\nPrompt: 104 tokens, 99.266 tokens-per-sec\nGeneration: 209 tokens, 27.010 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('User Account Creation', () => {\n  it('Should allow admin to fill new user form and save the account', () => {\n    cy.visit('/new-user'); // Assuming the URL for the new user form is /new-user\n\n    cy.get('#username').type('testuser');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#password').type('password123');\n    cy.get('#confirmPassword').type('password123');\n    cy.get('#submitButton').click();\n\n    cy.get('.success-message').should('be.visible').should('contain', 'User created successfully!');\n\n    // Optionally, verify the user is present in the system (e.g., by checking a table)\n    // cy.get('#user-table tbody tr').should('have.length.greaterThan', 0);\n  });\n});\n```\n==========\nPrompt: 104 tokens, 123.165 tokens-per-sec\nGeneration: 209 tokens, 26.986 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 67.354 tokens-per-sec\nGeneration: 212 tokens, 25.024 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Checkout Process', () => {\n  it('Should complete the checkout process with valid payment details', () => {\n    cy.visit('/checkout');\n\n    // Assuming elements are present and visible\n    cy.get('#payment-form').should('be.visible');\n\n    // Fill in payment details (replace with actual selectors)\n    cy.get('#card-number').type('1234567890123456');\n    cy.get('#expiry-date').type('12/24');\n    cy.get('#cvv').type('123');\n    cy.get('#submit-payment').click();\n\n    // Assert order confirmation\n    cy.get('#order-confirmation-message').should('be.visible');\n    cy.get('#order-confirmation-message').should('contain', 'Order confirmed!');\n  });\n});\n```\n==========\nPrompt: 102 tokens, 86.102 tokens-per-sec\nGeneration: 200 tokens, 26.957 tokens-per-sec\nPeak memory: 7.899 GB",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Login Test', () => {\n  it('Login with valid credentials', () => {\n    cy.visit('/login'); // Replace with the actual login page URL\n    cy.get('#email').type('test@example.com'); // Replace with the actual email input field\n    cy.get('#password').type('password123'); // Replace with the actual password input field\n    cy.get('#login-button').click(); // Replace with the actual login button\n    cy.url().should('include', '/dashboard'); // Replace with the expected dashboard URL\n  });\n});\n```\n==========\nPrompt: 108 tokens, 102.618 tokens-per-sec\nGeneration: 133 tokens, 27.137 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "describe('Login', () => {\n  it('should login with valid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('user@example.com');\n    cy.get('[data-testid=\"password\"]').type('Password123!');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.url().should('include', '/dashboard');\n    cy.get('[data-testid=\"welcome-msg\"]').should('be.visible');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Login with Invalid Credentials', () => {\n  it('Should display an error message for wrong password', () => {\n    cy.visit('/login');\n    cy.get('#username').type('validuser');\n    cy.get('#password').type('wrongpassword');\n    cy.get('#login-button').click();\n    cy.get('.error-message').should('be.visible');\n  });\n\n  it('Should stay on the login page after invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('#username').type('validuser');\n    cy.get('#password').type('wrongpassword');\n    cy.get('#login-button').click();\n    cy.url().should('include', '/login');\n  });\n});\n```\n==========\nPrompt: 103 tokens, 97.596 tokens-per-sec\nGeneration: 178 tokens, 25.939 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 0.6,
+      "recall": 1.0,
+      "f1": 0.75,
+      "gen_count": 10,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Password Reset', () => {\n  it('Should send a reset link on valid email', () => {\n    cy.visit('/password/reset');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#submit').click();\n    cy.contains('Reset password email has been sent').should('be.visible');\n  });\n\n  it('Should show success message after reset', () => {\n    cy.visit('/password/reset');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#submit').click();\n    cy.contains('Reset password email has been sent').should('be.visible');\n    cy.visit('/password/reset/confirm');\n    cy.get('#new_password').type('newpassword123');\n    cy.get('#confirm_password').type('newpassword123');\n    cy.get('#submit').click();\n    cy.contains('Password reset successfully').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 98 tokens, 78.924 tokens-per-sec\nGeneration: 238 tokens, 26.679 tokens-per-sec\nPeak memory: 7.894 GB",
+      "reference": "describe('Password Reset', () => {\n  it('should send reset email for valid account', () => {\n    cy.visit('/forgot-password');\n    cy.get('[data-testid=\"email-input\"]').type('user@example.com');\n    cy.get('[data-testid=\"send-reset\"]').click();\n    cy.get('[data-testid=\"success-msg\"]').should('contain', 'Check your email');\n  });\n});",
+      "precision": 0.3077,
+      "recall": 1.0,
+      "f1": 0.4706,
+      "gen_count": 13,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Update Profile', () => {\n  it('Should update profile information', () => {\n    cy.visit('/profile'); // Assuming the profile page URL is /profile\n    cy.get('#firstName').type('John');\n    cy.get('#lastName').type('Doe');\n    cy.get('#email').type('john.doe@example.com');\n    cy.get('#saveButton').click();\n    cy.url().should('include', '/profile');\n    cy.get('#firstName').should('have.text', 'John');\n    cy.get('#lastName').should('have.text', 'Doe');\n    cy.get('#email').should('have.value', 'john.doe@example.com');\n  });\n});\n```\n==========\nPrompt: 98 tokens, 72.429 tokens-per-sec\nGeneration: 171 tokens, 26.853 tokens-per-sec\nPeak memory: 7.894 GB",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.5556,
+      "recall": 1.0,
+      "f1": 0.7143,
+      "gen_count": 9,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Checkout Process', () => {\n  it('Should complete the checkout process with valid payment details', () => {\n    cy.visit('/checkout');\n\n    // Assuming elements are present and visible\n    cy.get('#payment-form').should('be.visible');\n\n    // Fill in payment details (replace with actual selectors)\n    cy.get('#card-number').type('1234567890123456');\n    cy.get('#expiry-date').type('12/24');\n    cy.get('#cvv').type('123');\n    cy.get('#submit-payment').click();\n\n    // Assert order confirmation\n    cy.get('#order-confirmation-message').should('be.visible');\n    cy.get('#order-confirmation-message').should('contain', 'Order confirmed!');\n  });\n});\n```\n==========\nPrompt: 102 tokens, 86.806 tokens-per-sec\nGeneration: 200 tokens, 26.839 tokens-per-sec\nPeak memory: 7.899 GB",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Checkout Process', () => {\n  it('Should complete the checkout process with valid payment details', () => {\n    cy.visit('/checkout');\n\n    // Assuming elements are present and visible\n    cy.get('#payment-form').should('be.visible');\n\n    // Fill in payment details (replace with actual selectors)\n    cy.get('#card-number').type('1234567890123456');\n    cy.get('#expiry-date').type('12/24');\n    cy.get('#cvv').type('123');\n    cy.get('#submit-payment').click();\n\n    // Assert order confirmation\n    cy.get('#order-confirmation-message').should('be.visible');\n    cy.get('#order-confirmation-message').should('contain', 'Order confirmed!');\n  });\n});\n```\n==========\nPrompt: 102 tokens, 79.408 tokens-per-sec\nGeneration: 200 tokens, 26.423 tokens-per-sec\nPeak memory: 7.899 GB",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Login with Invalid Credentials', () => {\n  it('Should display an error message for wrong password', () => {\n    cy.visit('/login');\n    cy.get('#username').type('validuser');\n    cy.get('#password').type('wrongpassword');\n    cy.get('#login-button').click();\n    cy.get('.error-message').should('be.visible');\n  });\n\n  it('Should stay on the login page after invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('#username').type('validuser');\n    cy.get('#password').type('wrongpassword');\n    cy.get('#login-button').click();\n    cy.url().should('include', '/login');\n  });\n});\n```\n==========\nPrompt: 103 tokens, 86.060 tokens-per-sec\nGeneration: 178 tokens, 26.850 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 0.6,
+      "recall": 1.0,
+      "f1": 0.75,
+      "gen_count": 10,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 91.862 tokens-per-sec\nGeneration: 170 tokens, 27.057 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 117.224 tokens-per-sec\nGeneration: 170 tokens, 27.019 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Order History', () => {\n  it('Should access the order history page', () => {\n    cy.visit('/order-history');\n    cy.url().should('include', '/order-history');\n  });\n\n  it('Should list past orders', () => {\n    cy.get('.order-item').should('be.visible').and('have.length.greaterThan', 0);\n  });\n\n  it('Should view order details', () => {\n    cy.get('.order-item').first().click();\n    cy.get('.order-details').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 101 tokens, 69.792 tokens-per-sec\nGeneration: 146 tokens, 28.165 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 120.813 tokens-per-sec\nGeneration: 170 tokens, 29.588 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Update Profile', () => {\n  it('Should update profile information', () => {\n    cy.visit('/profile'); // Assuming the profile page URL is /profile\n    cy.get('#firstName').type('John');\n    cy.get('#lastName').type('Doe');\n    cy.get('#email').type('john.doe@example.com');\n    cy.get('#saveButton').click();\n    cy.url().should('include', '/profile');\n    cy.get('#firstName').should('have.text', 'John');\n    cy.get('#lastName').should('have.text', 'Doe');\n    cy.get('#email').should('have.value', 'john.doe@example.com');\n  });\n});\n```\n==========\nPrompt: 98 tokens, 111.337 tokens-per-sec\nGeneration: 171 tokens, 29.551 tokens-per-sec\nPeak memory: 7.894 GB",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.5556,
+      "recall": 1.0,
+      "f1": 0.7143,
+      "gen_count": 9,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 127.006 tokens-per-sec\nGeneration: 212 tokens, 29.551 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 73.248 tokens-per-sec\nGeneration: 170 tokens, 29.173 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Password Reset', () => {\n  it('Should send a reset link on valid email', () => {\n    cy.visit('/password/reset');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#submit').click();\n    cy.contains('Reset password email has been sent').should('be.visible');\n  });\n\n  it('Should show success message after reset', () => {\n    cy.visit('/password/reset');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#submit').click();\n    cy.contains('Reset password email has been sent').should('be.visible');\n    cy.visit('/password/reset/confirm');\n    cy.get('#new_password').type('newpassword123');\n    cy.get('#confirm_password').type('newpassword123');\n    cy.get('#submit').click();\n    cy.contains('Password reset successfully').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 98 tokens, 438.037 tokens-per-sec\nGeneration: 238 tokens, 29.629 tokens-per-sec\nPeak memory: 7.894 GB",
+      "reference": "describe('Password Reset', () => {\n  it('should send reset email for valid account', () => {\n    cy.visit('/forgot-password');\n    cy.get('[data-testid=\"email-input\"]').type('user@example.com');\n    cy.get('[data-testid=\"send-reset\"]').click();\n    cy.get('[data-testid=\"success-msg\"]').should('contain', 'Check your email');\n  });\n});",
+      "precision": 0.3077,
+      "recall": 1.0,
+      "f1": 0.4706,
+      "gen_count": 13,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Update Profile', () => {\n  it('Should update profile information', () => {\n    cy.visit('/profile'); // Assuming the profile page URL is /profile\n    cy.get('#firstName').type('John');\n    cy.get('#lastName').type('Doe');\n    cy.get('#email').type('john.doe@example.com');\n    cy.get('#saveButton').click();\n    cy.url().should('include', '/profile');\n    cy.get('#firstName').should('have.text', 'John');\n    cy.get('#lastName').should('have.text', 'Doe');\n    cy.get('#email').should('have.value', 'john.doe@example.com');\n  });\n});\n```\n==========\nPrompt: 98 tokens, 100.246 tokens-per-sec\nGeneration: 171 tokens, 29.981 tokens-per-sec\nPeak memory: 7.894 GB",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.5556,
+      "recall": 1.0,
+      "f1": 0.7143,
+      "gen_count": 9,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Login Test', () => {\n  it('Login with valid credentials', () => {\n    cy.visit('/login'); // Replace with the actual login page URL\n    cy.get('#email').type('test@example.com'); // Replace with the actual email input field\n    cy.get('#password').type('password123'); // Replace with the actual password input field\n    cy.get('#login-button').click(); // Replace with the actual login button\n    cy.url().should('include', '/dashboard'); // Replace with the expected dashboard URL\n  });\n});\n```\n==========\nPrompt: 108 tokens, 170.637 tokens-per-sec\nGeneration: 133 tokens, 30.061 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "describe('Login', () => {\n  it('should login with valid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('user@example.com');\n    cy.get('[data-testid=\"password\"]').type('Password123!');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.url().should('include', '/dashboard');\n    cy.get('[data-testid=\"welcome-msg\"]').should('be.visible');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Checkout Process', () => {\n  it('Should complete the checkout process with valid payment details', () => {\n    cy.visit('/checkout');\n\n    // Assuming elements are present and visible\n    cy.get('#payment-form').should('be.visible');\n\n    // Fill in payment details (replace with actual selectors)\n    cy.get('#card-number').type('1234567890123456');\n    cy.get('#expiry-date').type('12/24');\n    cy.get('#cvv').type('123');\n    cy.get('#submit-payment').click();\n\n    // Assert order confirmation\n    cy.get('#order-confirmation-message').should('be.visible');\n    cy.get('#order-confirmation-message').should('contain', 'Order confirmed!');\n  });\n});\n```\n==========\nPrompt: 102 tokens, 185.335 tokens-per-sec\nGeneration: 200 tokens, 28.914 tokens-per-sec\nPeak memory: 7.899 GB",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('User Account Creation', () => {\n  it('Should allow admin to fill new user form and save the account', () => {\n    cy.visit('/new-user'); // Assuming the URL for the new user form is /new-user\n\n    cy.get('#username').type('testuser');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#password').type('password123');\n    cy.get('#confirmPassword').type('password123');\n    cy.get('#submitButton').click();\n\n    cy.get('.success-message').should('be.visible').should('contain', 'User created successfully!');\n\n    // Optionally, verify the user is present in the system (e.g., by checking a table)\n    // cy.get('#user-table tbody tr').should('have.length.greaterThan', 0);\n  });\n});\n```\n==========\nPrompt: 104 tokens, 89.024 tokens-per-sec\nGeneration: 209 tokens, 29.529 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 119.198 tokens-per-sec\nGeneration: 170 tokens, 29.911 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Checkout Process', () => {\n  it('Should complete the checkout process with valid payment details', () => {\n    cy.visit('/checkout');\n\n    // Assuming elements are present and visible\n    cy.get('#payment-form').should('be.visible');\n\n    // Fill in payment details (replace with actual selectors)\n    cy.get('#card-number').type('1234567890123456');\n    cy.get('#expiry-date').type('12/24');\n    cy.get('#cvv').type('123');\n    cy.get('#submit-payment').click();\n\n    // Assert order confirmation\n    cy.get('#order-confirmation-message').should('be.visible');\n    cy.get('#order-confirmation-message').should('contain', 'Order confirmed!');\n  });\n});\n```\n==========\nPrompt: 102 tokens, 154.243 tokens-per-sec\nGeneration: 200 tokens, 29.951 tokens-per-sec\nPeak memory: 7.899 GB",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('User Account Creation', () => {\n  it('Should allow admin to fill new user form and save the account', () => {\n    cy.visit('/new-user'); // Assuming the URL for the new user form is /new-user\n\n    cy.get('#username').type('testuser');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#password').type('password123');\n    cy.get('#confirmPassword').type('password123');\n    cy.get('#submitButton').click();\n\n    cy.get('.success-message').should('be.visible').should('contain', 'User created successfully!');\n\n    // Optionally, verify the user is present in the system (e.g., by checking a table)\n    // cy.get('#user-table tbody tr').should('have.length.greaterThan', 0);\n  });\n});\n```\n==========\nPrompt: 104 tokens, 153.480 tokens-per-sec\nGeneration: 209 tokens, 28.912 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 91.252 tokens-per-sec\nGeneration: 212 tokens, 29.864 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 103.731 tokens-per-sec\nGeneration: 212 tokens, 29.956 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Order History', () => {\n  it('Should access the order history page', () => {\n    cy.visit('/order-history');\n    cy.url().should('include', '/order-history');\n  });\n\n  it('Should list past orders', () => {\n    cy.get('.order-item').should('be.visible').and('have.length.greaterThan', 0);\n  });\n\n  it('Should view order details', () => {\n    cy.get('.order-item').first().click();\n    cy.get('.order-details').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 101 tokens, 138.848 tokens-per-sec\nGeneration: 146 tokens, 29.994 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 152.551 tokens-per-sec\nGeneration: 170 tokens, 29.747 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('User Account Creation', () => {\n  it('Should allow admin to fill new user form and save the account', () => {\n    cy.visit('/new-user'); // Assuming the URL for the new user form is /new-user\n\n    cy.get('#username').type('testuser');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#password').type('password123');\n    cy.get('#confirmPassword').type('password123');\n    cy.get('#submitButton').click();\n\n    cy.get('.success-message').should('be.visible').should('contain', 'User created successfully!');\n\n    // Optionally, verify the user is present in the system (e.g., by checking a table)\n    // cy.get('#user-table tbody tr').should('have.length.greaterThan', 0);\n  });\n});\n```\n==========\nPrompt: 104 tokens, 81.492 tokens-per-sec\nGeneration: 209 tokens, 29.516 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('User Account Creation', () => {\n  it('Should allow admin to fill new user form and save the account', () => {\n    cy.visit('/new-user'); // Assuming the URL for the new user form is /new-user\n\n    cy.get('#username').type('testuser');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#password').type('password123');\n    cy.get('#confirmPassword').type('password123');\n    cy.get('#submitButton').click();\n\n    cy.get('.success-message').should('be.visible').should('contain', 'User created successfully!');\n\n    // Optionally, verify the user is present in the system (e.g., by checking a table)\n    // cy.get('#user-table tbody tr').should('have.length.greaterThan', 0);\n  });\n});\n```\n==========\nPrompt: 104 tokens, 114.732 tokens-per-sec\nGeneration: 209 tokens, 29.775 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('User Account Creation', () => {\n  it('Should allow admin to fill new user form and save the account', () => {\n    cy.visit('/new-user'); // Assuming the URL for the new user form is /new-user\n\n    cy.get('#username').type('testuser');\n    cy.get('#email').type('testuser@example.com');\n    cy.get('#password').type('password123');\n    cy.get('#confirmPassword').type('password123');\n    cy.get('#submitButton').click();\n\n    cy.get('.success-message').should('be.visible').should('contain', 'User created successfully!');\n\n    // Optionally, verify the user is present in the system (e.g., by checking a table)\n    // cy.get('#user-table tbody tr').should('have.length.greaterThan', 0);\n  });\n});\n```\n==========\nPrompt: 104 tokens, 112.411 tokens-per-sec\nGeneration: 209 tokens, 29.897 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 108.095 tokens-per-sec\nGeneration: 170 tokens, 29.951 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Order History', () => {\n  it('Should access the order history page', () => {\n    cy.visit('/order-history');\n    cy.url().should('include', '/order-history');\n  });\n\n  it('Should list past orders', () => {\n    cy.get('.order-item').should('be.visible').and('have.length.greaterThan', 0);\n  });\n\n  it('Should view order details', () => {\n    cy.get('.order-item').first().click();\n    cy.get('.order-details').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 101 tokens, 92.193 tokens-per-sec\nGeneration: 146 tokens, 29.808 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Add Product to Cart', () => {\n  it('Verify Add to Cart Button Visibility', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').should('be.visible');\n  });\n\n  it('Verify Cart Count Increments', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-count').should('contain.text', '1');\n  });\n\n  it('Verify Item Appears in Cart', () => {\n    cy.visit('/your-product-page'); // Replace with your product page URL\n    cy.get('#add-to-cart-button').click();\n    cy.get('.cart-item').should('be.visible');\n  });\n});\n```\n==========\nPrompt: 105 tokens, 107.880 tokens-per-sec\nGeneration: 212 tokens, 29.738 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\ndescribe('Product Search', () => {\n  it('Should search for products by keyword', () => {\n    cy.visit('/search'); // Assuming the search page is at /search\n    cy.get('#search-bar').type('test product'); // Assuming search bar has id \"search-bar\"\n    cy.get('#search-button').click(); // Assuming search button has id \"search-button\"\n    cy.get('.product-item').should('be.visible'); // Assuming product items have class \"product-item\"\n    cy.get('.product-item').each(($el) => {\n      cy.wrap($el).should('contain.text', 'test product'); // Verify each result contains the keyword\n    });\n  });\n});\n```\n==========\nPrompt: 101 tokens, 162.345 tokens-per-sec\nGeneration: 170 tokens, 29.996 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091,
+      "gen_count": 5,
+      "ref_count": 6
+    }
+  ]
+}

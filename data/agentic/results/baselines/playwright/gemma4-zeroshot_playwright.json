@@ -1,0 +1,389 @@
+{
+  "model": "gemma4-zeroshot",
+  "framework": "playwright",
+  "metrics": {
+    "precision": 0.7512809523809524,
+    "recall": 0.8158857142857143,
+    "f1": 0.7301547619047619
+  },
+  "results": [
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 488.206 tokens-per-sec\nGeneration: 207 tokens, 29.876 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 99.090 tokens-per-sec\nGeneration: 207 tokens, 29.708 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Update profile information', async ({ page }) => {\n  // Assuming a login flow exists - replace with your actual login steps\n  await page.goto('https://example.com/profile'); // Replace with your application URL\n  await page.fill('input[name=\"username\"]', 'existingUser'); // Replace with actual username field\n  await page.fill('input[name=\"password\"]', 'password123'); // Replace with actual password field\n  await page.locator('button').click(); // Replace with actual login button\n\n  // Navigate to the profile page again to ensure login is successful\n  await page.goto('https://example.com/profile');\n\n  // Verify the profile form is editable\n  await expect(page.locator('input[name=\"firstName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"lastName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"email\"]')).toBeVisible();\n\n  // Update profile information\n  await page.fill('input[name=\"firstName\"]', 'NewFirstName');\n  await page.fill('input[name=\"lastName\"]', 'NewLastName');\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  // Save the changes\n  await page.locator('button').click(); // Replace with actual save button\n\n  // Verify changes are saved\n  await expect(page.locator('div[data-testid=\"profile-updated-message\"]')).toBeVisible(); // Replace with actual success message selector\n\n  // Verify updated info is shown\n  await expect(page.locator('div[data-testid=\"profile-firstName\"]')).toHaveText('NewFirstName');\n  await expect(page.locator('div[data-testid=\"profile-lastName\"]')).toHaveText('NewLastName');\n  await expect(page.locator('div[data-testid=\"profile-email\"]')).toHaveText('newemail@example.com');\n});\n```\n==========\nPrompt: 101 tokens, 95.891 tokens-per-sec\nGeneration: 448 tokens, 29.596 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.3333,
+      "recall": 0.75,
+      "f1": 0.4615,
+      "gen_count": 9,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 135.174 tokens-per-sec\nGeneration: 207 tokens, 29.961 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Login with invalid credentials', async ({ page }) => {\n  await page.goto('https://example.com/login'); // Replace with your login page URL\n  await page.fill('input[name=\"username\"]', 'invaliduser');\n  await page.fill('input[name=\"password\"]', 'wrongpassword');\n  await page.click('button[type=\"submit\"]');\n\n  await expect(page.locator('text=Error')).toBeVisible();\n  await expect(page).toHaveURL('https://example.com/login');\n});\n```\n==========\nPrompt: 106 tokens, 177.047 tokens-per-sec\nGeneration: 141 tokens, 29.364 tokens-per-sec\nPeak memory: 7.905 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Create new user account', async ({ page }) => {\n  // Assuming the page is already navigated to the registration page\n  await page.goto('/register');\n\n  // Fill the form\n  await page.fill('input[name=\"username\"]', 'testuser');\n  await page.fill('input[name=\"email\"]', 'testuser@example.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.fill('input[name=\"confirmPassword\"]', 'password123');\n\n  // Click the submit button\n  await page.click('button[type=\"submit\"]');\n\n  // Wait for the confirmation message to appear\n  await expect(page.locator('text=User created successfully!')).toBeVisible();\n\n  // Optionally, verify the user is redirected to a success page or logged in\n  // await expect(page.url()).toBe('/dashboard');\n});\n```\n==========\nPrompt: 103 tokens, 86.719 tokens-per-sec\nGeneration: 225 tokens, 29.593 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Create new user account', async ({ page }) => {\n  // Assuming the page is already navigated to the registration page\n  await page.goto('/register');\n\n  // Fill the form\n  await page.fill('input[name=\"username\"]', 'testuser');\n  await page.fill('input[name=\"email\"]', 'testuser@example.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.fill('input[name=\"confirmPassword\"]', 'password123');\n\n  // Click the submit button\n  await page.click('button[type=\"submit\"]');\n\n  // Wait for the confirmation message to appear\n  await expect(page.locator('text=User created successfully!')).toBeVisible();\n\n  // Optionally, verify the user is redirected to a success page or logged in\n  // await expect(page.url()).toBe('/dashboard');\n});\n```\n==========\nPrompt: 103 tokens, 112.424 tokens-per-sec\nGeneration: 225 tokens, 29.702 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 123.314 tokens-per-sec\nGeneration: 207 tokens, 29.930 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Checkout process with valid payment details', async ({ page }) => {\n  // Assuming a page with a checkout form exists\n  await page.goto('https://example.com/checkout'); // Replace with your actual URL\n\n  // Verify checkout form is visible\n  await expect(page).toHaveTitle('Checkout');\n\n  // Fill in payment details (replace with actual selectors)\n  await page.fill('input[name=\"cardNumber\"]', '1234567890123456');\n  await page.fill('input[name=\"expiryMonth\"]', '12');\n  await page.fill('input[name=\"expiryYear\"]', '2024');\n  await page.fill('input[name=\"cvv\"]', '123');\n\n  // Click the payment button\n  await page.click('button[type=\"submit\"]');\n\n  // Verify payment accepted\n  await expect(page).toHaveText('Payment accepted');\n\n  // Verify order confirmation shown\n  await expect(page).toHaveText('Order confirmed');\n\n  // Optionally, verify order details or redirect to order confirmation page\n  // await expect(page.locator('text=Order ID:')).toHaveText('Order ID:');\n});\n```\n==========\nPrompt: 105 tokens, 130.500 tokens-per-sec\nGeneration: 291 tokens, 29.056 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Login with valid credentials', async ({ page }) => {\n  await page.goto('https://example.com/login'); // Replace with your login page URL\n  await page.fill('input[name=\"username\"]', 'valid_user'); // Replace with your username field\n  await page.fill('input[name=\"password\"]', 'valid_password'); // Replace with your password field\n  await page.click('button[type=\"submit\"]'); // Replace with your login button selector\n\n  await expect(page).toHaveURL(/dashboard/); // Replace with your dashboard URL pattern\n  await expect(page).toHaveTitle(/Dashboard/); // Replace with your dashboard title\n});\n```\n==========\nPrompt: 109 tokens, 98.656 tokens-per-sec\nGeneration: 167 tokens, 29.693 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Login with invalid credentials', async ({ page }) => {\n  await page.goto('https://example.com/login'); // Replace with your login page URL\n  await page.fill('input[name=\"username\"]', 'invaliduser');\n  await page.fill('input[name=\"password\"]', 'wrongpassword');\n  await page.click('button[type=\"submit\"]');\n\n  await expect(page.locator('text=Error')).toBeVisible();\n  await expect(page).toHaveURL('https://example.com/login');\n});\n```\n==========\nPrompt: 106 tokens, 117.639 tokens-per-sec\nGeneration: 141 tokens, 30.000 tokens-per-sec\nPeak memory: 7.905 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Reset password flow', async ({ page }) => {\n  const baseUrl = 'https://example.com'; // Replace with your actual base URL\n  const email = 'testuser@example.com'; // Replace with a valid test email\n\n  await page.goto(baseUrl + '/reset-password');\n  await page.fill('input[name=\"email\"]', email);\n  await page.click('button[type=\"submit\"]');\n\n  await expect(page).toHaveURL(/reset-password-confirmation\\?token=.*$/);\n\n  await page.goto(baseUrl + '/reset-password-confirmation?token=YOUR_RESET_TOKEN'); // Replace YOUR_RESET_TOKEN with a valid token\n\n  await expect(page).toHaveText('Success! Your password has been reset.');\n\n  await expect(page).not.toContain('Incorrect email');\n});\n```\n==========\nPrompt: 101 tokens, 167.525 tokens-per-sec\nGeneration: 206 tokens, 29.902 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "gen_count": 6,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Update profile information', async ({ page }) => {\n  // Assuming a login flow exists - replace with your actual login steps\n  await page.goto('https://example.com/profile'); // Replace with your application URL\n  await page.fill('input[name=\"username\"]', 'existingUser'); // Replace with actual username field\n  await page.fill('input[name=\"password\"]', 'password123'); // Replace with actual password field\n  await page.locator('button').click(); // Replace with actual login button\n\n  // Navigate to the profile page again to ensure login is successful\n  await page.goto('https://example.com/profile');\n\n  // Verify the profile form is editable\n  await expect(page.locator('input[name=\"firstName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"lastName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"email\"]')).toBeVisible();\n\n  // Update profile information\n  await page.fill('input[name=\"firstName\"]', 'NewFirstName');\n  await page.fill('input[name=\"lastName\"]', 'NewLastName');\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  // Save the changes\n  await page.locator('button').click(); // Replace with actual save button\n\n  // Verify changes are saved\n  await expect(page.locator('div[data-testid=\"profile-updated-message\"]')).toBeVisible(); // Replace with actual success message selector\n\n  // Verify updated info is shown\n  await expect(page.locator('div[data-testid=\"profile-firstName\"]')).toHaveText('NewFirstName');\n  await expect(page.locator('div[data-testid=\"profile-lastName\"]')).toHaveText('NewLastName');\n  await expect(page.locator('div[data-testid=\"profile-email\"]')).toHaveText('newemail@example.com');\n});\n```\n==========\nPrompt: 101 tokens, 149.178 tokens-per-sec\nGeneration: 448 tokens, 29.241 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.3333,
+      "recall": 0.75,
+      "f1": 0.4615,
+      "gen_count": 9,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Checkout process with valid payment details', async ({ page }) => {\n  // Assuming a page with a checkout form exists\n  await page.goto('https://example.com/checkout'); // Replace with your actual URL\n\n  // Verify checkout form is visible\n  await expect(page).toHaveTitle('Checkout');\n\n  // Fill in payment details (replace with actual selectors)\n  await page.fill('input[name=\"cardNumber\"]', '1234567890123456');\n  await page.fill('input[name=\"expiryMonth\"]', '12');\n  await page.fill('input[name=\"expiryYear\"]', '2024');\n  await page.fill('input[name=\"cvv\"]', '123');\n\n  // Click the payment button\n  await page.click('button[type=\"submit\"]');\n\n  // Verify payment accepted\n  await expect(page).toHaveText('Payment accepted');\n\n  // Verify order confirmation shown\n  await expect(page).toHaveText('Order confirmed');\n\n  // Optionally, verify order details or redirect to order confirmation page\n  // await expect(page.locator('text=Order ID:')).toHaveText('Order ID:');\n});\n```\n==========\nPrompt: 105 tokens, 100.553 tokens-per-sec\nGeneration: 291 tokens, 29.723 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Checkout process with valid payment details', async ({ page }) => {\n  // Assuming a page with a checkout form exists\n  await page.goto('https://example.com/checkout'); // Replace with your actual URL\n\n  // Verify checkout form is visible\n  await expect(page).toHaveTitle('Checkout');\n\n  // Fill in payment details (replace with actual selectors)\n  await page.fill('input[name=\"cardNumber\"]', '1234567890123456');\n  await page.fill('input[name=\"expiryMonth\"]', '12');\n  await page.fill('input[name=\"expiryYear\"]', '2024');\n  await page.fill('input[name=\"cvv\"]', '123');\n\n  // Click the payment button\n  await page.click('button[type=\"submit\"]');\n\n  // Verify payment accepted\n  await expect(page).toHaveText('Payment accepted');\n\n  // Verify order confirmation shown\n  await expect(page).toHaveText('Order confirmed');\n\n  // Optionally, verify order details or redirect to order confirmation page\n  // await expect(page.locator('text=Order ID:')).toHaveText('Order ID:');\n});\n```\n==========\nPrompt: 105 tokens, 121.793 tokens-per-sec\nGeneration: 291 tokens, 29.847 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Login with invalid credentials', async ({ page }) => {\n  await page.goto('https://example.com/login'); // Replace with your login page URL\n  await page.fill('input[name=\"username\"]', 'invaliduser');\n  await page.fill('input[name=\"password\"]', 'wrongpassword');\n  await page.click('button[type=\"submit\"]');\n\n  await expect(page.locator('text=Error')).toBeVisible();\n  await expect(page).toHaveURL('https://example.com/login');\n});\n```\n==========\nPrompt: 106 tokens, 484.879 tokens-per-sec\nGeneration: 141 tokens, 30.044 tokens-per-sec\nPeak memory: 7.905 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 96.186 tokens-per-sec\nGeneration: 202 tokens, 29.479 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 108.001 tokens-per-sec\nGeneration: 202 tokens, 29.809 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('View Order History', async ({ page }) => {\n  await page.goto('/order-history');\n  await expect(page).toHaveTitle(/Order History/);\n\n  const orderHistoryList = page.locator('text=Order History');\n  await orderHistoryList.click();\n\n  const orderItems = page.locator('table.order-table tbody tr');\n  await expect(orderItems).toHaveCount(3);\n\n  const firstOrderItem = orderItems.first();\n  await expect(firstOrderItem).toContainText('Order ID: 123');\n  await expect(firstOrderItem).toContainText('Date: 2023-10-26');\n  await expect(firstOrderItem).toContainText('Total: $50.00');\n\n  const orderDetailsButton = firstOrderItem.locator('button:has-text(\"Details\")');\n  await orderDetailsButton.click();\n\n  await expect(page).toHaveTitle(/Order Details/);\n\n  const orderDetailsSummary = page.locator('text=Order Summary');\n  await expect(orderDetailsSummary).toBeVisible();\n\n  const orderDetailsTable = page.locator('table.order-details');\n  await expect(orderDetailsTable).toBeVisible();\n});\n```\n==========\nPrompt: 103 tokens, 117.158 tokens-per-sec\nGeneration: 289 tokens, 29.854 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.1429,
+      "recall": 1.0,
+      "f1": 0.25,
+      "gen_count": 7,
+      "ref_count": 1
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 124.611 tokens-per-sec\nGeneration: 202 tokens, 29.013 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Update profile information', async ({ page }) => {\n  // Assuming a login flow exists - replace with your actual login steps\n  await page.goto('https://example.com/profile'); // Replace with your application URL\n  await page.fill('input[name=\"username\"]', 'existingUser'); // Replace with actual username field\n  await page.fill('input[name=\"password\"]', 'password123'); // Replace with actual password field\n  await page.locator('button').click(); // Replace with actual login button\n\n  // Navigate to the profile page again to ensure login is successful\n  await page.goto('https://example.com/profile');\n\n  // Verify the profile form is editable\n  await expect(page.locator('input[name=\"firstName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"lastName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"email\"]')).toBeVisible();\n\n  // Update profile information\n  await page.fill('input[name=\"firstName\"]', 'NewFirstName');\n  await page.fill('input[name=\"lastName\"]', 'NewLastName');\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  // Save the changes\n  await page.locator('button').click(); // Replace with actual save button\n\n  // Verify changes are saved\n  await expect(page.locator('div[data-testid=\"profile-updated-message\"]')).toBeVisible(); // Replace with actual success message selector\n\n  // Verify updated info is shown\n  await expect(page.locator('div[data-testid=\"profile-firstName\"]')).toHaveText('NewFirstName');\n  await expect(page.locator('div[data-testid=\"profile-lastName\"]')).toHaveText('NewLastName');\n  await expect(page.locator('div[data-testid=\"profile-email\"]')).toHaveText('newemail@example.com');\n});\n```\n==========\nPrompt: 101 tokens, 102.720 tokens-per-sec\nGeneration: 448 tokens, 29.646 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.3333,
+      "recall": 0.75,
+      "f1": 0.4615,
+      "gen_count": 9,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 108.299 tokens-per-sec\nGeneration: 207 tokens, 29.914 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 140.417 tokens-per-sec\nGeneration: 202 tokens, 29.997 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Reset password flow', async ({ page }) => {\n  const baseUrl = 'https://example.com'; // Replace with your actual base URL\n  const email = 'testuser@example.com'; // Replace with a valid test email\n\n  await page.goto(baseUrl + '/reset-password');\n  await page.fill('input[name=\"email\"]', email);\n  await page.click('button[type=\"submit\"]');\n\n  await expect(page).toHaveURL(/reset-password-confirmation\\?token=.*$/);\n\n  await page.goto(baseUrl + '/reset-password-confirmation?token=YOUR_RESET_TOKEN'); // Replace YOUR_RESET_TOKEN with a valid token\n\n  await expect(page).toHaveText('Success! Your password has been reset.');\n\n  await expect(page).not.toContain('Incorrect email');\n});\n```\n==========\nPrompt: 101 tokens, 71.519 tokens-per-sec\nGeneration: 206 tokens, 27.167 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "gen_count": 6,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Update profile information', async ({ page }) => {\n  // Assuming a login flow exists - replace with your actual login steps\n  await page.goto('https://example.com/profile'); // Replace with your application URL\n  await page.fill('input[name=\"username\"]', 'existingUser'); // Replace with actual username field\n  await page.fill('input[name=\"password\"]', 'password123'); // Replace with actual password field\n  await page.locator('button').click(); // Replace with actual login button\n\n  // Navigate to the profile page again to ensure login is successful\n  await page.goto('https://example.com/profile');\n\n  // Verify the profile form is editable\n  await expect(page.locator('input[name=\"firstName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"lastName\"]')).toBeVisible();\n  await expect(page.locator('input[name=\"email\"]')).toBeVisible();\n\n  // Update profile information\n  await page.fill('input[name=\"firstName\"]', 'NewFirstName');\n  await page.fill('input[name=\"lastName\"]', 'NewLastName');\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  // Save the changes\n  await page.locator('button').click(); // Replace with actual save button\n\n  // Verify changes are saved\n  await expect(page.locator('div[data-testid=\"profile-updated-message\"]')).toBeVisible(); // Replace with actual success message selector\n\n  // Verify updated info is shown\n  await expect(page.locator('div[data-testid=\"profile-firstName\"]')).toHaveText('NewFirstName');\n  await expect(page.locator('div[data-testid=\"profile-lastName\"]')).toHaveText('NewLastName');\n  await expect(page.locator('div[data-testid=\"profile-email\"]')).toHaveText('newemail@example.com');\n});\n```\n==========\nPrompt: 101 tokens, 437.577 tokens-per-sec\nGeneration: 448 tokens, 29.595 tokens-per-sec\nPeak memory: 7.897 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.3333,
+      "recall": 0.75,
+      "f1": 0.4615,
+      "gen_count": 9,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Login with valid credentials', async ({ page }) => {\n  await page.goto('https://example.com/login'); // Replace with your login page URL\n  await page.fill('input[name=\"username\"]', 'valid_user'); // Replace with your username field\n  await page.fill('input[name=\"password\"]', 'valid_password'); // Replace with your password field\n  await page.click('button[type=\"submit\"]'); // Replace with your login button selector\n\n  await expect(page).toHaveURL(/dashboard/); // Replace with your dashboard URL pattern\n  await expect(page).toHaveTitle(/Dashboard/); // Replace with your dashboard title\n});\n```\n==========\nPrompt: 109 tokens, 129.735 tokens-per-sec\nGeneration: 167 tokens, 30.001 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Checkout process with valid payment details', async ({ page }) => {\n  // Assuming a page with a checkout form exists\n  await page.goto('https://example.com/checkout'); // Replace with your actual URL\n\n  // Verify checkout form is visible\n  await expect(page).toHaveTitle('Checkout');\n\n  // Fill in payment details (replace with actual selectors)\n  await page.fill('input[name=\"cardNumber\"]', '1234567890123456');\n  await page.fill('input[name=\"expiryMonth\"]', '12');\n  await page.fill('input[name=\"expiryYear\"]', '2024');\n  await page.fill('input[name=\"cvv\"]', '123');\n\n  // Click the payment button\n  await page.click('button[type=\"submit\"]');\n\n  // Verify payment accepted\n  await expect(page).toHaveText('Payment accepted');\n\n  // Verify order confirmation shown\n  await expect(page).toHaveText('Order confirmed');\n\n  // Optionally, verify order details or redirect to order confirmation page\n  // await expect(page.locator('text=Order ID:')).toHaveText('Order ID:');\n});\n```\n==========\nPrompt: 105 tokens, 151.140 tokens-per-sec\nGeneration: 291 tokens, 29.083 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Create new user account', async ({ page }) => {\n  // Assuming the page is already navigated to the registration page\n  await page.goto('/register');\n\n  // Fill the form\n  await page.fill('input[name=\"username\"]', 'testuser');\n  await page.fill('input[name=\"email\"]', 'testuser@example.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.fill('input[name=\"confirmPassword\"]', 'password123');\n\n  // Click the submit button\n  await page.click('button[type=\"submit\"]');\n\n  // Wait for the confirmation message to appear\n  await expect(page.locator('text=User created successfully!')).toBeVisible();\n\n  // Optionally, verify the user is redirected to a success page or logged in\n  // await expect(page.url()).toBe('/dashboard');\n});\n```\n==========\nPrompt: 103 tokens, 96.200 tokens-per-sec\nGeneration: 225 tokens, 29.777 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 115.107 tokens-per-sec\nGeneration: 202 tokens, 29.844 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Checkout process with valid payment details', async ({ page }) => {\n  // Assuming a page with a checkout form exists\n  await page.goto('https://example.com/checkout'); // Replace with your actual URL\n\n  // Verify checkout form is visible\n  await expect(page).toHaveTitle('Checkout');\n\n  // Fill in payment details (replace with actual selectors)\n  await page.fill('input[name=\"cardNumber\"]', '1234567890123456');\n  await page.fill('input[name=\"expiryMonth\"]', '12');\n  await page.fill('input[name=\"expiryYear\"]', '2024');\n  await page.fill('input[name=\"cvv\"]', '123');\n\n  // Click the payment button\n  await page.click('button[type=\"submit\"]');\n\n  // Verify payment accepted\n  await expect(page).toHaveText('Payment accepted');\n\n  // Verify order confirmation shown\n  await expect(page).toHaveText('Order confirmed');\n\n  // Optionally, verify order details or redirect to order confirmation page\n  // await expect(page.locator('text=Order ID:')).toHaveText('Order ID:');\n});\n```\n==========\nPrompt: 105 tokens, 135.504 tokens-per-sec\nGeneration: 291 tokens, 29.800 tokens-per-sec\nPeak memory: 7.902 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Create new user account', async ({ page }) => {\n  // Assuming the page is already navigated to the registration page\n  await page.goto('/register');\n\n  // Fill the form\n  await page.fill('input[name=\"username\"]', 'testuser');\n  await page.fill('input[name=\"email\"]', 'testuser@example.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.fill('input[name=\"confirmPassword\"]', 'password123');\n\n  // Click the submit button\n  await page.click('button[type=\"submit\"]');\n\n  // Wait for the confirmation message to appear\n  await expect(page.locator('text=User created successfully!')).toBeVisible();\n\n  // Optionally, verify the user is redirected to a success page or logged in\n  // await expect(page.url()).toBe('/dashboard');\n});\n```\n==========\nPrompt: 103 tokens, 83.994 tokens-per-sec\nGeneration: 225 tokens, 29.696 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 474.487 tokens-per-sec\nGeneration: 207 tokens, 29.756 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 128.348 tokens-per-sec\nGeneration: 207 tokens, 29.864 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('View Order History', async ({ page }) => {\n  await page.goto('/order-history');\n  await expect(page).toHaveTitle(/Order History/);\n\n  const orderHistoryList = page.locator('text=Order History');\n  await orderHistoryList.click();\n\n  const orderItems = page.locator('table.order-table tbody tr');\n  await expect(orderItems).toHaveCount(3);\n\n  const firstOrderItem = orderItems.first();\n  await expect(firstOrderItem).toContainText('Order ID: 123');\n  await expect(firstOrderItem).toContainText('Date: 2023-10-26');\n  await expect(firstOrderItem).toContainText('Total: $50.00');\n\n  const orderDetailsButton = firstOrderItem.locator('button:has-text(\"Details\")');\n  await orderDetailsButton.click();\n\n  await expect(page).toHaveTitle(/Order Details/);\n\n  const orderDetailsSummary = page.locator('text=Order Summary');\n  await expect(orderDetailsSummary).toBeVisible();\n\n  const orderDetailsTable = page.locator('table.order-details');\n  await expect(orderDetailsTable).toBeVisible();\n});\n```\n==========\nPrompt: 103 tokens, 461.501 tokens-per-sec\nGeneration: 289 tokens, 29.849 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.1429,
+      "recall": 1.0,
+      "f1": 0.25,
+      "gen_count": 7,
+      "ref_count": 1
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 89.906 tokens-per-sec\nGeneration: 202 tokens, 29.829 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Create new user account', async ({ page }) => {\n  // Assuming the page is already navigated to the registration page\n  await page.goto('/register');\n\n  // Fill the form\n  await page.fill('input[name=\"username\"]', 'testuser');\n  await page.fill('input[name=\"email\"]', 'testuser@example.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.fill('input[name=\"confirmPassword\"]', 'password123');\n\n  // Click the submit button\n  await page.click('button[type=\"submit\"]');\n\n  // Wait for the confirmation message to appear\n  await expect(page.locator('text=User created successfully!')).toBeVisible();\n\n  // Optionally, verify the user is redirected to a success page or logged in\n  // await expect(page.url()).toBe('/dashboard');\n});\n```\n==========\nPrompt: 103 tokens, 101.241 tokens-per-sec\nGeneration: 225 tokens, 29.792 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Create new user account', async ({ page }) => {\n  // Assuming the page is already navigated to the registration page\n  await page.goto('/register');\n\n  // Fill the form\n  await page.fill('input[name=\"username\"]', 'testuser');\n  await page.fill('input[name=\"email\"]', 'testuser@example.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.fill('input[name=\"confirmPassword\"]', 'password123');\n\n  // Click the submit button\n  await page.click('button[type=\"submit\"]');\n\n  // Wait for the confirmation message to appear\n  await expect(page.locator('text=User created successfully!')).toBeVisible();\n\n  // Optionally, verify the user is redirected to a success page or logged in\n  // await expect(page.url()).toBe('/dashboard');\n});\n```\n==========\nPrompt: 103 tokens, 152.974 tokens-per-sec\nGeneration: 225 tokens, 29.929 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Create new user account', async ({ page }) => {\n  // Assuming the page is already navigated to the registration page\n  await page.goto('/register');\n\n  // Fill the form\n  await page.fill('input[name=\"username\"]', 'testuser');\n  await page.fill('input[name=\"email\"]', 'testuser@example.com');\n  await page.fill('input[name=\"password\"]', 'password123');\n  await page.fill('input[name=\"confirmPassword\"]', 'password123');\n\n  // Click the submit button\n  await page.click('button[type=\"submit\"]');\n\n  // Wait for the confirmation message to appear\n  await expect(page.locator('text=User created successfully!')).toBeVisible();\n\n  // Optionally, verify the user is redirected to a success page or logged in\n  // await expect(page.url()).toBe('/dashboard');\n});\n```\n==========\nPrompt: 103 tokens, 154.266 tokens-per-sec\nGeneration: 225 tokens, 29.842 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 99.868 tokens-per-sec\nGeneration: 202 tokens, 29.624 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('View Order History', async ({ page }) => {\n  await page.goto('/order-history');\n  await expect(page).toHaveTitle(/Order History/);\n\n  const orderHistoryList = page.locator('text=Order History');\n  await orderHistoryList.click();\n\n  const orderItems = page.locator('table.order-table tbody tr');\n  await expect(orderItems).toHaveCount(3);\n\n  const firstOrderItem = orderItems.first();\n  await expect(firstOrderItem).toContainText('Order ID: 123');\n  await expect(firstOrderItem).toContainText('Date: 2023-10-26');\n  await expect(firstOrderItem).toContainText('Total: $50.00');\n\n  const orderDetailsButton = firstOrderItem.locator('button:has-text(\"Details\")');\n  await orderDetailsButton.click();\n\n  await expect(page).toHaveTitle(/Order Details/);\n\n  const orderDetailsSummary = page.locator('text=Order Summary');\n  await expect(orderDetailsSummary).toBeVisible();\n\n  const orderDetailsTable = page.locator('table.order-details');\n  await expect(orderDetailsTable).toBeVisible();\n});\n```\n==========\nPrompt: 103 tokens, 464.637 tokens-per-sec\nGeneration: 289 tokens, 29.506 tokens-per-sec\nPeak memory: 7.900 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.1429,
+      "recall": 1.0,
+      "f1": 0.25,
+      "gen_count": 7,
+      "ref_count": 1
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Add product to cart', async ({ page }) => {\n  // Assuming a product exists and the page is already navigated to the product page\n  await page.goto('/products/example');\n\n  // Verify the \"Add to Cart\" button is visible\n  await expect(page.locator('button[data-testid=\"add-to-cart-button\"]')).toBeVisible();\n\n  // Click the \"Add to Cart\" button\n  await page.click('button[data-testid=\"add-to-cart-button\"]');\n\n  // Verify the cart count increments\n  await expect(page.locator('text=Cart')).toBeVisible();\n  await expect(page.locator('text=Cart Count: 1')).toBeVisible();\n\n  // Verify the item appears in the cart\n  await expect(page.locator('text=Example Product')).toBeVisible();\n});\n```\n==========\nPrompt: 108 tokens, 117.954 tokens-per-sec\nGeneration: 207 tokens, 29.966 tokens-per-sec\nPeak memory: 7.907 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('Search for products by keyword', async ({ page }) => {\n  await page.goto('https://www.example.com'); // Replace with your website URL\n  await page.fill('input[name=\"search\"]', 'keyword'); // Replace with the actual search input selector\n  await page.locator('input[name=\"search\"]').press('Enter');\n\n  await expect(page).toHaveTitle(/Search results for \"keyword\"/); // Replace with expected title\n\n  const results = await page.locator('div.product-item').all(); // Replace with your product item selector\n  expect(results.length).toBeGreaterThanOrEqual(1);\n\n  for (const result of results) {\n    const text = await result.textContent();\n    expect(text).toContain('keyword'); // Replace with expected keyword in product name\n  }\n});\n```\n==========\nPrompt: 104 tokens, 112.958 tokens-per-sec\nGeneration: 202 tokens, 28.767 tokens-per-sec\nPeak memory: 7.901 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "gen_count": 2,
+      "ref_count": 3
+    }
+  ]
+}

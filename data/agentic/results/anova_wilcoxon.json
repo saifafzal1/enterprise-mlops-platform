@@ -1,0 +1,12 @@
+{
+  "anova": {
+    "f_statistic": 201.61426521180346,
+    "p_value": 4.364472696292866e-204
+  },
+  "wilcoxon": {
+    "model_a": "phi3_cypress",
+    "model_b": "gpt-4o-mini_cypress",
+    "statistic": 0.0,
+    "p_value": 4.523931496735096e-08
+  }
+}

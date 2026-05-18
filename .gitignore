@@ -1,4 +1,6 @@
+.env
 .venv/
+.venv_agentic/
 mlruns/
 __pycache__/
 *.pyc

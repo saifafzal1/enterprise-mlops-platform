@@ -1,0 +1,389 @@
+{
+  "model": "gpt-4o-mini",
+  "framework": "cypress",
+  "metrics": {
+    "precision": 0.6448904761904762,
+    "recall": 0.9619047619047618,
+    "f1": 0.7587690476190476
+  },
+  "results": [
+    {
+      "generated": "```javascript\ndescribe('Add Product to Shopping Cart', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment the cart count when a product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Navigate to the cart\n        cy.get('.cart-item').should('exist'); // Check if the item is in the cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Add Product to Shopping Cart', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment cart count when product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Navigate to the cart\n        cy.get('.cart-item').should('exist'); // Check if the item is in the cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Profile Update', () => {\n    beforeEach(() => {\n        cy.login(); // Assuming there's a custom command for login\n        cy.visit('/profile'); // Navigate to the profile page\n    });\n\n    it('should allow the user to edit profile information', () => {\n        cy.get('input[name=\"firstName\"]').clear().type('NewFirstName');\n        cy.get('input[name=\"lastName\"]').clear().type('NewLastName');\n        cy.get('input[name=\"email\"]').clear().type('newemail@example.com');\n        cy.get('button[type=\"submit\"]').click();\n        \n        cy.get('.success-message').should('contain', 'Profile updated successfully');\n    });\n\n    it('should display updated profile information', () => {\n        cy.get('input[name=\"firstName\"]').clear().type('UpdatedFirstName');\n        cy.get('input[name=\"lastName\"]').clear().type('UpdatedLastName');\n        cy.get('input[name=\"email\"]').clear().type('updatedemail@example.com');\n        cy.get('button[type=\"submit\"]').click();\n\n        cy.reload(); // Reload the page to verify the changes\n        cy.get('input[name=\"firstName\"]').should('have.value', 'UpdatedFirstName');\n        cy.get('input[name=\"lastName\"]').should('have.value', 'UpdatedLastName');\n        cy.get('input[name=\"email\"]').should('have.value', 'updatedemail@example.com');\n    });\n});\n```",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.3846,
+      "recall": 1.0,
+      "f1": 0.5556,
+      "gen_count": 13,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Add Product to Shopping Cart', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment cart count when product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Navigate to cart\n        cy.get('.cart-item').should('exist'); // Check if item is in cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Login Page', () => {\n    it('should show an error message when invalid credentials are entered', () => {\n        // Visit the login page\n        cy.visit('/login');\n\n        // Enter invalid credentials\n        cy.get('input[name=\"username\"]').type('invalidUser');\n        cy.get('input[name=\"password\"]').type('wrongPassword');\n\n        // Submit the login form\n        cy.get('button[type=\"submit\"]').click();\n\n        // Assert that the error message is displayed\n        cy.get('.error-message').should('be.visible').and('contain', 'Invalid credentials');\n\n        // Assert that the user stays on the login page\n        cy.url().should('include', '/login');\n    });\n});\n```",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('User Account Creation', () => {\n    it('should allow admin to create a new user account', () => {\n        // Visit the admin login page\n        cy.visit('/admin/login');\n\n        // Log in as an admin\n        cy.get('input[name=\"username\"]').type('adminUser');\n        cy.get('input[name=\"password\"]').type('adminPassword');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Navigate to the new user creation page\n        cy.visit('/admin/users/new');\n\n        // Fill out the new user form\n        cy.get('input[name=\"firstName\"]').type('John');\n        cy.get('input[name=\"lastName\"]').type('Doe');\n        cy.get('input[name=\"email\"]').type('john.doe@example.com');\n        cy.get('input[name=\"password\"]').type('securePassword123');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Verify the user is saved to the system\n        cy.contains('User created successfully').should('be.visible');\n\n        // Check if the confirmation message is shown\n        cy.get('.confirmation-message').should('contain', 'User John Doe has been created.');\n    });\n});\n```",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "gen_count": 12,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('User Account Creation', () => {\n    it('should allow admin to fill new user form and create a user account', () => {\n        // Visit the admin login page\n        cy.visit('/admin/login');\n\n        // Log in as an admin\n        cy.get('input[name=\"username\"]').type('adminUser');\n        cy.get('input[name=\"password\"]').type('adminPassword');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Navigate to the new user creation page\n        cy.visit('/admin/users/new');\n\n        // Fill out the new user form\n        cy.get('input[name=\"firstName\"]').type('John');\n        cy.get('input[name=\"lastName\"]').type('Doe');\n        cy.get('input[name=\"email\"]').type('john.doe@example.com');\n        cy.get('input[name=\"password\"]').type('securePassword123');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Verify the user is saved to the system\n        cy.contains('User created successfully').should('be.visible');\n\n        // Optionally, verify the user exists in the user list\n        cy.visit('/admin/users');\n        cy.contains('john.doe@example.com').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.4615,
+      "recall": 1.0,
+      "f1": 0.6316,
+      "gen_count": 13,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Add Product to Shopping Cart', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment the cart count when a product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Navigate to the cart\n        cy.get('.cart-item').should('exist'); // Check if the item is in the cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Checkout Process', () => {\n    beforeEach(() => {\n        cy.visit('/checkout');\n    });\n\n    it('should display the checkout form', () => {\n        cy.get('.checkout-form').should('be.visible');\n    });\n\n    it('should complete the checkout process with valid payment details', () => {\n        cy.get('input[name=\"cardNumber\"]').type('4111111111111111');\n        cy.get('input[name=\"expiryDate\"]').type('12/25');\n        cy.get('input[name=\"cvv\"]').type('123');\n        cy.get('input[name=\"billingAddress\"]').type('123 Main St, Anytown, USA');\n        \n        cy.get('.submit-button').click();\n        \n        cy.get('.order-confirmation').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "```javascript\ndescribe('User Login', () => {\n    it('should load the login page', () => {\n        cy.visit('/login');\n        cy.url().should('include', '/login');\n        cy.get('h1').should('contain', 'Login');\n    });\n\n    it('should accept valid email and password', () => {\n        cy.visit('/login');\n        cy.get('input[name=\"email\"]').type('validuser@example.com');\n        cy.get('input[name=\"password\"]').type('validPassword123');\n        cy.get('button[type=\"submit\"]').click();\n    });\n\n    it('should redirect to dashboard after successful login', () => {\n        cy.url().should('include', '/dashboard');\n        cy.get('h1').should('contain', 'Dashboard');\n    });\n});\n```",
+      "reference": "describe('Login', () => {\n  it('should login with valid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('user@example.com');\n    cy.get('[data-testid=\"password\"]').type('Password123!');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.url().should('include', '/dashboard');\n    cy.get('[data-testid=\"welcome-msg\"]').should('be.visible');\n  });\n});",
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "gen_count": 9,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Login Page', () => {\n    it('should show an error message when invalid credentials are entered', () => {\n        cy.visit('/login'); // Replace with the actual login page URL\n\n        cy.get('input[name=\"username\"]').type('validUsername'); // Replace with a valid username\n        cy.get('input[name=\"password\"]').type('invalidPassword'); // Enter an invalid password\n        cy.get('button[type=\"submit\"]').click(); // Replace with the actual submit button selector\n\n        cy.get('.error-message') // Replace with the actual selector for the error message\n            .should('be.visible')\n            .and('contain', 'Invalid credentials'); // Replace with the actual error message text\n\n        cy.url().should('include', '/login'); // Ensure the user stays on the login page\n    });\n});\n```",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Password Reset Functionality', () => {\n    it('should send a reset link to a valid email', () => {\n        cy.visit('/password-reset');\n\n        cy.get('input[name=\"email\"]').type('validuser@example.com');\n        cy.get('button[type=\"submit\"]').click();\n\n        cy.contains('A password reset link has been sent to your email').should('be.visible');\n    });\n\n    it('should show an error message for an invalid email', () => {\n        cy.visit('/password-reset');\n\n        cy.get('input[name=\"email\"]').type('invaliduser@example.com');\n        cy.get('button[type=\"submit\"]').click();\n\n        cy.contains('Email not found').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Password Reset', () => {\n  it('should send reset email for valid account', () => {\n    cy.visit('/forgot-password');\n    cy.get('[data-testid=\"email-input\"]').type('user@example.com');\n    cy.get('[data-testid=\"send-reset\"]').click();\n    cy.get('[data-testid=\"success-msg\"]').should('contain', 'Check your email');\n  });\n});",
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "gen_count": 8,
+      "ref_count": 4
+    },
+    {
+      "generated": "```javascript\ndescribe('Profile Update', () => {\n    beforeEach(() => {\n        cy.login(); // Assuming there's a custom command for login\n        cy.visit('/profile'); // Navigate to the profile page\n    });\n\n    it('should allow the user to edit profile information', () => {\n        cy.get('input[name=\"firstName\"]').clear().type('NewFirstName');\n        cy.get('input[name=\"lastName\"]').clear().type('NewLastName');\n        cy.get('input[name=\"email\"]').clear().type('newemail@example.com');\n        cy.get('textarea[name=\"bio\"]').clear().type('This is my updated bio.');\n        \n        cy.get('button[type=\"submit\"]').click(); // Submit the form\n\n        cy.get('.success-message').should('contain', 'Profile updated successfully'); // Check for success message\n    });\n\n    it('should display updated profile information', () => {\n        cy.get('input[name=\"firstName\"]').clear().type('UpdatedFirstName');\n        cy.get('input[name=\"lastName\"]').clear().type('UpdatedLastName');\n        cy.get('input[name=\"email\"]').clear().type('updatedemail@example.com');\n        cy.get('textarea[name=\"bio\"]').clear().type('This is my new bio.');\n\n        cy.get('button[type=\"submit\"]').click(); // Submit the form\n\n        cy.reload(); // Reload the page to verify changes\n\n        cy.get('input[name=\"firstName\"]').should('have.value', 'UpdatedFirstName');\n        cy.get('input[name=\"lastName\"]').should('have.value', 'UpdatedLastName');\n        cy.get('input[name=\"email\"]').should('have.value', 'updatedemail@example.com');\n        cy.get('textarea[name=\"bio\"]').should('have.value', 'This is my new bio.');\n    });\n});\n```",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.3125,
+      "recall": 1.0,
+      "f1": 0.4762,
+      "gen_count": 16,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Checkout Process', () => {\n    beforeEach(() => {\n        cy.visit('/checkout');\n    });\n\n    it('should display the checkout form', () => {\n        cy.get('.checkout-form').should('be.visible');\n    });\n\n    it('should complete the checkout process with valid payment details', () => {\n        cy.get('input[name=\"cardNumber\"]').type('4111111111111111');\n        cy.get('input[name=\"expiryDate\"]').type('12/25');\n        cy.get('input[name=\"cvv\"]').type('123');\n        cy.get('input[name=\"billingAddress\"]').type('123 Main St, Anytown, USA');\n        \n        cy.get('.submit-button').click();\n        \n        cy.get('.order-confirmation').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "```javascript\ndescribe('Checkout Process', () => {\n    beforeEach(() => {\n        cy.visit('/checkout');\n    });\n\n    it('should display the checkout form', () => {\n        cy.get('.checkout-form').should('be.visible');\n    });\n\n    it('should complete the checkout process with valid payment details', () => {\n        cy.get('input[name=\"cardNumber\"]').type('4111111111111111');\n        cy.get('input[name=\"expiryDate\"]').type('12/25');\n        cy.get('input[name=\"cvv\"]').type('123');\n        cy.get('input[name=\"billingAddress\"]').type('123 Main St, Anytown, USA');\n        \n        cy.get('.submit-button').click();\n        \n        cy.get('.order-confirmation').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "```javascript\ndescribe('Login Page', () => {\n    it('should show an error message when invalid credentials are entered', () => {\n        cy.visit('/login');\n\n        cy.get('input[name=\"username\"]').type('validUsername');\n        cy.get('input[name=\"password\"]').type('invalidPassword');\n        cy.get('button[type=\"submit\"]').click();\n\n        cy.get('.error-message').should('be.visible').and('contain', 'Invalid credentials');\n        cy.url().should('include', '/login');\n    });\n});\n```",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage or the relevant page with the search bar\n    });\n\n    it('should display the search bar', () => {\n        cy.get('input[name=\"search\"]').should('be.visible'); // Adjust the selector as needed\n    });\n\n    it('should display results after searching', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('input[name=\"search\"]').type(searchKeyword); // Adjust the selector as needed\n        cy.get('button[type=\"submit\"]').click(); // Adjust the selector as needed\n        cy.get('.search-results').should('be.visible'); // Adjust the selector as needed\n    });\n\n    it('should match results with the search keyword', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('input[name=\"search\"]').type(searchKeyword); // Adjust the selector as needed\n        cy.get('button[type=\"submit\"]').click(); // Adjust the selector as needed\n        cy.get('.search-results').find('.product-item').each(($el) => {\n            cy.wrap($el).contains(searchKeyword).should('exist'); // Adjust the selector as needed\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Replace with the actual URL of the application\n    });\n\n    it('should display the search bar', () => {\n        cy.get('.search-bar').should('be.visible'); // Replace with the actual selector for the search bar\n    });\n\n    it('should display results after searching', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('.search-bar').type(searchKeyword);\n        cy.get('.search-button').click(); // Replace with the actual selector for the search button\n        cy.get('.search-results').should('be.visible'); // Replace with the actual selector for the search results\n    });\n\n    it('should match results with the search keyword', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('.search-bar').type(searchKeyword);\n        cy.get('.search-button').click(); // Replace with the actual selector for the search button\n        cy.get('.search-results').find('.product-item').each(($el) => { // Replace with the actual selector for product items\n            cy.wrap($el).contains(searchKeyword).should('exist');\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Order History', () => {\n    beforeEach(() => {\n        cy.loginAsRegisteredUser(); // Assuming a custom command for login\n        cy.visit('/order-history'); // Navigate to the order history page\n    });\n\n    it('should display the order history page', () => {\n        cy.url().should('include', '/order-history');\n        cy.get('h1').should('contain', 'Order History'); // Check for the page title\n    });\n\n    it('should list past orders', () => {\n        cy.get('.order-list').should('exist'); // Check if the order list exists\n        cy.get('.order-item').should('have.length.greaterThan', 0); // Ensure there are past orders listed\n    });\n\n    it('should allow viewing order details', () => {\n        cy.get('.order-item').first().click(); // Click on the first order item\n        cy.url().should('include', '/order-details'); // Check if navigated to order details page\n        cy.get('.order-details').should('exist'); // Ensure order details are displayed\n    });\n});\n```",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the search bar', () => {\n        cy.get('.search-bar').should('be.visible'); // Check if the search bar is visible\n    });\n\n    it('should display results after searching', () => {\n        const searchKeyword = 'laptop';\n        cy.get('.search-bar').type(searchKeyword); // Type the keyword into the search bar\n        cy.get('.search-button').click(); // Click the search button\n        cy.get('.search-results').should('be.visible'); // Check if results are visible\n    });\n\n    it('should match results with the search keyword', () => {\n        const searchKeyword = 'laptop';\n        cy.get('.search-bar').type(searchKeyword); // Type the keyword into the search bar\n        cy.get('.search-button').click(); // Click the search button\n        cy.get('.search-results .product').each(($el) => {\n            cy.wrap($el).contains(searchKeyword); // Check if each result contains the keyword\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Profile Update', () => {\n    beforeEach(() => {\n        cy.login(); // Assuming there's a custom command for login\n        cy.visit('/profile'); // Navigate to the profile page\n    });\n\n    it('should allow the user to edit profile information', () => {\n        cy.get('input[name=\"username\"]').clear().type('newUsername');\n        cy.get('input[name=\"email\"]').clear().type('newemail@example.com');\n        cy.get('input[name=\"phone\"]').clear().type('1234567890');\n        cy.get('button[type=\"submit\"]').click();\n        \n        cy.get('.success-message').should('contain', 'Profile updated successfully');\n    });\n\n    it('should display the updated profile information', () => {\n        cy.get('input[name=\"username\"]').clear().type('newUsername');\n        cy.get('input[name=\"email\"]').clear().type('newemail@example.com');\n        cy.get('input[name=\"phone\"]').clear().type('1234567890');\n        cy.get('button[type=\"submit\"]').click();\n\n        cy.reload(); // Reload the page to check if the changes persist\n\n        cy.get('input[name=\"username\"]').should('have.value', 'newUsername');\n        cy.get('input[name=\"email\"]').should('have.value', 'newemail@example.com');\n        cy.get('input[name=\"phone\"]').should('have.value', '1234567890');\n    });\n});\n```",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.3846,
+      "recall": 1.0,
+      "f1": 0.5556,
+      "gen_count": 13,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Shopping Cart Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n        cy.login('registeredUser', 'password'); // Assuming a login function exists\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment cart count when product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Navigate to the cart\n        cy.get('.cart-item').should('exist'); // Check if the item is in the cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Replace with the actual URL of the application\n    });\n\n    it('should display the search bar', () => {\n        cy.get('.search-bar').should('be.visible'); // Replace with the actual selector for the search bar\n    });\n\n    it('should display results after searching', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('.search-bar').type(searchKeyword);\n        cy.get('.search-button').click(); // Replace with the actual selector for the search button\n        cy.get('.search-results').should('be.visible'); // Replace with the actual selector for the search results\n    });\n\n    it('should display results that match the keyword', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('.search-bar').type(searchKeyword);\n        cy.get('.search-button').click(); // Replace with the actual selector for the search button\n        cy.get('.search-results').children().each(($el) => {\n            cy.wrap($el).should('contain.text', searchKeyword);\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Password Reset Functionality', () => {\n    it('should send a reset link to a valid email', () => {\n        cy.visit('/password-reset');\n        cy.get('input[name=\"email\"]').type('validuser@example.com');\n        cy.get('button[type=\"submit\"]').click();\n        cy.contains('Reset link sent to your email').should('be.visible');\n    });\n\n    it('should show success message when reset link is sent', () => {\n        cy.visit('/password-reset');\n        cy.get('input[name=\"email\"]').type('validuser@example.com');\n        cy.get('button[type=\"submit\"]').click();\n        cy.get('.success-message').should('contain', 'Reset link sent to your email');\n    });\n});\n```",
+      "reference": "describe('Password Reset', () => {\n  it('should send reset email for valid account', () => {\n    cy.visit('/forgot-password');\n    cy.get('[data-testid=\"email-input\"]').type('user@example.com');\n    cy.get('[data-testid=\"send-reset\"]').click();\n    cy.get('[data-testid=\"success-msg\"]').should('contain', 'Check your email');\n  });\n});",
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "gen_count": 8,
+      "ref_count": 4
+    },
+    {
+      "generated": "```javascript\ndescribe('Profile Update', () => {\n    beforeEach(() => {\n        cy.login(); // Assuming there's a custom command for login\n        cy.visit('/profile'); // Navigate to the profile page\n    });\n\n    it('should allow the user to edit profile information', () => {\n        cy.get('input[name=\"username\"]').clear().type('newUsername');\n        cy.get('input[name=\"email\"]').clear().type('newemail@example.com');\n        cy.get('input[name=\"phone\"]').clear().type('1234567890');\n        cy.get('button[type=\"submit\"]').click();\n        \n        cy.get('.success-message').should('contain', 'Profile updated successfully');\n    });\n\n    it('should display updated profile information', () => {\n        cy.get('input[name=\"username\"]').clear().type('newUsername');\n        cy.get('input[name=\"email\"]').clear().type('newemail@example.com');\n        cy.get('input[name=\"phone\"]').clear().type('1234567890');\n        cy.get('button[type=\"submit\"]').click();\n\n        cy.reload(); // Reload the page to check if the changes persist\n\n        cy.get('input[name=\"username\"]').should('have.value', 'newUsername');\n        cy.get('input[name=\"email\"]').should('have.value', 'newemail@example.com');\n        cy.get('input[name=\"phone\"]').should('have.value', '1234567890');\n    });\n});\n```",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.3846,
+      "recall": 1.0,
+      "f1": 0.5556,
+      "gen_count": 13,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('User Login', () => {\n    it('should load the login page', () => {\n        cy.visit('/login');\n        cy.url().should('include', '/login');\n        cy.get('h1').should('contain', 'Login');\n    });\n\n    it('should accept valid email and password', () => {\n        cy.visit('/login');\n        cy.get('input[name=\"email\"]').type('validuser@example.com');\n        cy.get('input[name=\"password\"]').type('validPassword123');\n        cy.get('button[type=\"submit\"]').click();\n    });\n\n    it('should redirect to dashboard after successful login', () => {\n        cy.url().should('include', '/dashboard');\n        cy.get('h1').should('contain', 'Dashboard');\n    });\n});\n```",
+      "reference": "describe('Login', () => {\n  it('should login with valid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('user@example.com');\n    cy.get('[data-testid=\"password\"]').type('Password123!');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.url().should('include', '/dashboard');\n    cy.get('[data-testid=\"welcome-msg\"]').should('be.visible');\n  });\n});",
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "gen_count": 9,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Checkout Process', () => {\n    beforeEach(() => {\n        cy.visit('/checkout');\n    });\n\n    it('should display the checkout form', () => {\n        cy.get('.checkout-form').should('be.visible');\n    });\n\n    it('should complete the checkout process with valid payment details', () => {\n        cy.get('#card-number').type('4111111111111111');\n        cy.get('#expiry-date').type('12/25');\n        cy.get('#cvv').type('123');\n        cy.get('#billing-address').type('123 Main St');\n        cy.get('#city').type('Anytown');\n        cy.get('#state').select('CA');\n        cy.get('#zip-code').type('90210');\n        cy.get('#submit-button').click();\n\n        cy.get('.order-confirmation').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.6364,
+      "recall": 1.0,
+      "f1": 0.7778,
+      "gen_count": 11,
+      "ref_count": 7
+    },
+    {
+      "generated": "```javascript\ndescribe('User Account Creation', () => {\n    it('should allow admin to create a new user account', () => {\n        // Visit the admin login page\n        cy.visit('/admin/login');\n\n        // Log in as an admin\n        cy.get('input[name=\"username\"]').type('adminUser');\n        cy.get('input[name=\"password\"]').type('adminPassword');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Navigate to the new user creation page\n        cy.visit('/admin/users/new');\n\n        // Fill out the new user form\n        cy.get('input[name=\"firstName\"]').type('John');\n        cy.get('input[name=\"lastName\"]').type('Doe');\n        cy.get('input[name=\"email\"]').type('john.doe@example.com');\n        cy.get('input[name=\"password\"]').type('securePassword123');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Verify the user is saved to the system\n        cy.contains('User created successfully').should('be.visible');\n        cy.visit('/admin/users');\n        cy.contains('john.doe@example.com').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.4615,
+      "recall": 1.0,
+      "f1": 0.6316,
+      "gen_count": 13,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the search bar', () => {\n        cy.get('.search-bar').should('be.visible'); // Check if the search bar is visible\n    });\n\n    it('should display results after searching', () => {\n        const keyword = 'laptop';\n        cy.get('.search-bar').type(keyword); // Type the keyword into the search bar\n        cy.get('.search-button').click(); // Click the search button\n        cy.get('.search-results').should('be.visible'); // Check if results are visible\n    });\n\n    it('should match results with the keyword', () => {\n        const keyword = 'laptop';\n        cy.get('.search-bar').type(keyword); // Type the keyword into the search bar\n        cy.get('.search-button').click(); // Click the search button\n        cy.get('.search-results .product').each(($el) => {\n            cy.wrap($el).contains(keyword); // Check if each result contains the keyword\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Checkout Process', () => {\n    beforeEach(() => {\n        cy.visit('/checkout'); // Navigate to the checkout page\n    });\n\n    it('should display the checkout form', () => {\n        cy.get('form#checkout-form').should('be.visible'); // Check if the checkout form is visible\n    });\n\n    it('should complete the checkout process with valid payment details', () => {\n        cy.get('input[name=\"cardNumber\"]').type('4111111111111111'); // Enter valid card number\n        cy.get('input[name=\"expiryDate\"]').type('12/25'); // Enter valid expiry date\n        cy.get('input[name=\"cvv\"]').type('123'); // Enter valid CVV\n        cy.get('button[type=\"submit\"]').click(); // Submit the checkout form\n\n        cy.url().should('include', '/order-confirmation'); // Verify redirection to order confirmation page\n        cy.get('.order-confirmation').should('be.visible'); // Check if order confirmation is shown\n    });\n});\n```",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.875,
+      "recall": 1.0,
+      "f1": 0.9333,
+      "gen_count": 8,
+      "ref_count": 7
+    },
+    {
+      "generated": "```javascript\ndescribe('User Account Creation', () => {\n    it('should allow admin to fill new user form and create a user account', () => {\n        // Visit the admin login page\n        cy.visit('/admin/login');\n\n        // Log in as an admin\n        cy.get('input[name=\"username\"]').type('adminUser');\n        cy.get('input[name=\"password\"]').type('adminPassword');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Navigate to the new user creation page\n        cy.visit('/admin/users/new');\n\n        // Fill in the new user form\n        cy.get('input[name=\"firstName\"]').type('John');\n        cy.get('input[name=\"lastName\"]').type('Doe');\n        cy.get('input[name=\"email\"]').type('john.doe@example.com');\n        cy.get('input[name=\"password\"]').type('securePassword123');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Verify user is saved to the system\n        cy.contains('User created successfully').should('be.visible');\n\n        // Check if the confirmation message is shown\n        cy.get('.confirmation-message').should('contain', 'User John Doe has been created.');\n    });\n});\n```",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "gen_count": 12,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Add Product to Shopping Cart', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage or product page\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment cart count when product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Navigate to the cart\n        cy.get('.cart-item').should('exist'); // Check if the item is in the cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Shopping Cart Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n        cy.login('registeredUser', 'password'); // Assuming a login function exists\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment the cart count when a product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Assuming clicking the cart icon opens the cart\n        cy.get('.cart-item').should('exist'); // Check if the item is in the cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Order History', () => {\n    beforeEach(() => {\n        // Assuming the user is already logged in\n        cy.visit('/order-history');\n    });\n\n    it('should display the order history page', () => {\n        cy.url().should('include', '/order-history');\n        cy.get('h1').should('contain', 'Order History');\n    });\n\n    it('should list past orders', () => {\n        cy.get('.order-list').should('exist');\n        cy.get('.order-item').should('have.length.greaterThan', 0);\n    });\n\n    it('should view order details', () => {\n        cy.get('.order-item').first().click();\n        cy.url().should('include', '/order-details');\n        cy.get('.order-details').should('exist');\n    });\n});\n```",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage or the relevant page with the search bar\n    });\n\n    it('should display the search bar', () => {\n        cy.get('.search-bar').should('be.visible'); // Adjust the selector to match the search bar\n    });\n\n    it('should display results after searching', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('.search-bar').type(searchKeyword); // Adjust the selector to match the search bar\n        cy.get('.search-button').click(); // Adjust the selector to match the search button\n        cy.get('.search-results').should('be.visible'); // Adjust the selector to match the results container\n    });\n\n    it('should display results that match the keyword', () => {\n        const searchKeyword = 'laptop'; // Example keyword\n        cy.get('.search-bar').type(searchKeyword);\n        cy.get('.search-button').click();\n        cy.get('.search-results').find('.product-item').each(($el) => {\n            cy.wrap($el).contains(searchKeyword); // Adjust the selector to match individual product items\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('User Account Creation', () => {\n    it('should allow admin to fill new user form and create a user account', () => {\n        // Visit the admin login page\n        cy.visit('/admin/login');\n\n        // Log in as an admin\n        cy.get('input[name=\"username\"]').type('adminUser');\n        cy.get('input[name=\"password\"]').type('adminPassword');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Navigate to the new user creation page\n        cy.visit('/admin/users/new');\n\n        // Fill out the new user form\n        cy.get('input[name=\"username\"]').type('newUser');\n        cy.get('input[name=\"email\"]').type('newuser@example.com');\n        cy.get('input[name=\"password\"]').type('newUserPassword');\n        cy.get('input[name=\"confirmPassword\"]').type('newUserPassword');\n        \n        // Submit the form\n        cy.get('button[type=\"submit\"]').click();\n\n        // Verify the user is saved to the system\n        cy.contains('User created successfully').should('be.visible');\n        \n        // Check if the new user appears in the user list\n        cy.visit('/admin/users');\n        cy.contains('newUser').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.4615,
+      "recall": 1.0,
+      "f1": 0.6316,
+      "gen_count": 13,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('User Account Creation', () => {\n    it('should allow admin to fill new user form and create a user account', () => {\n        // Visit the admin user creation page\n        cy.visit('/admin/create-user');\n\n        // Fill in the new user form\n        cy.get('input[name=\"username\"]').type('newuser');\n        cy.get('input[name=\"email\"]').type('newuser@example.com');\n        cy.get('input[name=\"password\"]').type('Password123');\n        cy.get('input[name=\"confirmPassword\"]').type('Password123');\n\n        // Submit the form\n        cy.get('button[type=\"submit\"]').click();\n\n        // Verify the user is saved to the system\n        cy.request('/api/users/newuser').then((response) => {\n            expect(response.status).to.eq(200);\n            expect(response.body.username).to.eq('newuser');\n        });\n\n        // Check for confirmation message\n        cy.get('.confirmation-message').should('contain', 'User account created successfully');\n    });\n});\n```",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.8571,
+      "recall": 1.0,
+      "f1": 0.9231,
+      "gen_count": 7,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Create New User Account', () => {\n    it('should allow admin to fill new user form and save user', () => {\n        // Visit the admin panel\n        cy.visit('/admin');\n\n        // Log in as admin\n        cy.get('input[name=\"username\"]').type('adminUser');\n        cy.get('input[name=\"password\"]').type('adminPassword');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Navigate to the new user form\n        cy.get('a[href=\"/admin/users/new\"]').click();\n\n        // Fill out the new user form\n        cy.get('input[name=\"firstName\"]').type('John');\n        cy.get('input[name=\"lastName\"]').type('Doe');\n        cy.get('input[name=\"email\"]').type('john.doe@example.com');\n        cy.get('input[name=\"password\"]').type('securePassword123');\n        cy.get('button[type=\"submit\"]').click();\n\n        // Verify user is saved to the system\n        cy.contains('User created successfully').should('be.visible');\n\n        // Check if the user appears in the user list\n        cy.get('a[href=\"/admin/users\"]').click();\n        cy.contains('john.doe@example.com').should('be.visible');\n    });\n});\n```",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.4615,
+      "recall": 1.0,
+      "f1": 0.6316,
+      "gen_count": 13,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the search bar', () => {\n        cy.get('.search-bar').should('be.visible'); // Check if the search bar is visible\n    });\n\n    it('should display results after searching', () => {\n        const searchKeyword = 'laptop';\n        cy.get('.search-bar').type(searchKeyword); // Type the keyword into the search bar\n        cy.get('.search-button').click(); // Click the search button\n        cy.get('.search-results').should('be.visible'); // Check if results are visible\n    });\n\n    it('should display results that match the keyword', () => {\n        const searchKeyword = 'laptop';\n        cy.get('.search-bar').type(searchKeyword); // Type the keyword into the search bar\n        cy.get('.search-button').click(); // Click the search button\n        cy.get('.search-results').find('.product-item').each(($el) => {\n            cy.wrap($el).contains(searchKeyword); // Ensure each result contains the keyword\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    },
+    {
+      "generated": "```javascript\ndescribe('Order History', () => {\n    beforeEach(() => {\n        // Assuming the user is already logged in\n        cy.visit('/order-history');\n    });\n\n    it('should be accessible', () => {\n        cy.url().should('include', '/order-history');\n        cy.get('h1').should('contain', 'Order History');\n    });\n\n    it('should list past orders', () => {\n        cy.get('.order-list').should('exist');\n        cy.get('.order-item').should('have.length.greaterThan', 0);\n    });\n\n    it('should allow viewing order details', () => {\n        cy.get('.order-item').first().click();\n        cy.url().should('include', '/order-details');\n        cy.get('.order-details').should('exist');\n    });\n});\n```",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.625,
+      "recall": 1.0,
+      "f1": 0.7692,
+      "gen_count": 8,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Add Product to Shopping Cart', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the add to cart button', () => {\n        cy.get('.add-to-cart-button').should('be.visible');\n    });\n\n    it('should increment the cart count when a product is added', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-count').should('contain', '1');\n    });\n\n    it('should display the item in the cart', () => {\n        cy.get('.add-to-cart-button').click();\n        cy.get('.cart-icon').click(); // Navigate to the cart\n        cy.get('.cart-item').should('exist'); // Check if the item is in the cart\n    });\n});\n```",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.5714,
+      "recall": 0.8,
+      "f1": 0.6667,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\ndescribe('Product Search Functionality', () => {\n    beforeEach(() => {\n        cy.visit('/'); // Visit the homepage\n    });\n\n    it('should display the search bar', () => {\n        cy.get('input[name=\"search\"]').should('be.visible'); // Check if the search bar is visible\n    });\n\n    it('should display results after searching', () => {\n        const searchKeyword = 'laptop';\n        cy.get('input[name=\"search\"]').type(searchKeyword); // Type the keyword into the search bar\n        cy.get('button[type=\"submit\"]').click(); // Click the search button\n        cy.get('.search-results').should('be.visible'); // Check if results are visible\n    });\n\n    it('should match results with the search keyword', () => {\n        const searchKeyword = 'laptop';\n        cy.get('input[name=\"search\"]').type(searchKeyword); // Type the keyword into the search bar\n        cy.get('button[type=\"submit\"]').click(); // Click the search button\n        cy.get('.search-results').find('.product-item').each(($el) => {\n            cy.wrap($el).contains(searchKeyword); // Ensure each result contains the search keyword\n        });\n    });\n});\n```",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 8,
+      "ref_count": 6
+    }
+  ]
+}

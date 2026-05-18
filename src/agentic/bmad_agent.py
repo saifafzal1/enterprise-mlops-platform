@@ -97,14 +97,17 @@ class BMADAgent:
 
 
 def _generate_single(model_dir: str, prompt: str, max_new_tokens: int = 512) -> str:
-    """Generate a single completion from a prompt."""
-    import subprocess, sys
-    cmd = [sys.executable, "-m", "mlx_lm.generate",
-           "--model", model_dir,
+    """Generate a single completion from a prompt using fine-tuned adapter."""
+    import subprocess, sys, json as _json, os
+    cfg = os.path.join(model_dir, "adapter_config.json")
+    base_model = _json.load(open(cfg)).get("model", model_dir) if os.path.exists(cfg) else model_dir
+    cmd = [sys.executable, "-m", "mlx_lm", "generate",
+           "--model", base_model,
+           "--adapter-path", model_dir,
            "--prompt", prompt,
            "--max-tokens", str(max_new_tokens)]
     try:
-        res = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
         return res.stdout.strip()
     except Exception as e:
         return ""

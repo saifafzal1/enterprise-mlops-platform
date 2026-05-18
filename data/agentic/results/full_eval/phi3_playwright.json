@@ -1,0 +1,432 @@
+{
+  "model_dir": "/Users/saif.afzal/Documents/enterprise-mlops-platform/models/agentic/phi3_playwright",
+  "framework": "playwright",
+  "metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "n_samples": 42,
+  "results": [
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 4,
+      "ref_count": 4,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 0.6667,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 4,
+      "ref_count": 4,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 1,
+      "ref_count": 1,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 4,
+      "ref_count": 4,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 4,
+      "ref_count": 4,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 1,
+      "ref_count": 1,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 1,
+      "ref_count": 1,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 3,
+      "ref_count": 3,
+      "errors": [],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    }
+  ]
+}

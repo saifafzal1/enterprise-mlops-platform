@@ -1,0 +1,389 @@
+{
+  "model": "phi3-mini-zeroshot",
+  "framework": "playwright",
+  "metrics": {
+    "precision": 0.6285738095238095,
+    "recall": 0.6888761904761905,
+    "f1": 0.643145238095238
+  },
+  "results": [
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 84.969 tokens-per-sec\nGeneration: 384 tokens, 27.856 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 94.650 tokens-per-sec\nGeneration: 384 tokens, 26.796 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/profile-update');\n\n\n  // Assuming there's a profile edit form with input fields for name, email, and password\n\n  await page.fill('input[name=\"name\"]', 'New Name');\n\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  await page.fill('input[name=\"password\"]', 'NewPassword123');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the confirmation message or the updated info to be shown\n\n  await page.waitForSelector('div[data-test=\"confirmation-message\"]');\n\n\n  // Check if the updated info is shown\n\n  const confirmationMessage = await page.$('div[data-test=\"confirmation-message\"]');\n\n  if (confirmationMessage) {\n\n    console.log('Profile updated successfully');\n\n  } else {\n\n    throw new Error('Profile update confirmation not found');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 103 tokens, 88.733 tokens-per-sec\nGeneration: 315 tokens, 27.851 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "gen_count": 6,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 145.553 tokens-per-sec\nGeneration: 384 tokens, 28.453 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/login');\n\n\n  // Simulate entering invalid credentials\n\n  await page.fill('input[name=\"username\"]', 'invalidUser');\n\n  await page.fill('input[name=\"password\"]', 'wrongPassword');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the error message to appear\n\n  await page.waitForSelector('div.error-message');\n\n\n  // Check if the error message is displayed\n\n  const errorMessage = await page.$('div.error-message');\n\n  if (errorMessage) {\n\n    console.log('Error message is displayed correctly.');\n\n  } else {\n\n    console.error('Error message is not displayed correctly.');\n\n  }\n\n\n  // Check if the user stays on the login page\n\n  const isOnLoginPage = await page.url() === 'https://example.com/login';\n\n  if (isOnLoginPage) {\n\n    console.log('User stays on the login page.');\n\n  } else {\n\n    console.error('User navigated away from the login page.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 106 tokens, 103.199 tokens-per-sec\nGeneration: 351 tokens, 27.162 tokens-per-sec\nPeak memory: 7.857 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/new-user-registration');\n\n\n  // Admin fills new user form\n\n  await page.fill('input[name=\"username\"]', 'adminUser');\n\n  await page.fill('input[name=\"email\"]', 'admin@example.com');\n\n  await page.fill('input[name=\"password\"]', 'adminPass123');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the user to be saved and confirmation shown\n\n  await page.waitForSelector('div.confirmation-message');\n\n\n  // Confirmation shown\n\n  const confirmationMessage = await page.$('div.confirmation-message');\n\n  const confirmationText = await confirmationMessage.innerText();\n\n  console.log(confirmationText);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 105 tokens, 77.966 tokens-per-sec\nGeneration: 263 tokens, 28.028 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/new-user-registration');\n\n\n  // Admin fills new user form\n\n  await page.fill('input[name=\"username\"]', 'adminUser');\n\n  await page.fill('input[name=\"email\"]', 'admin@example.com');\n\n  await page.fill('input[name=\"password\"]', 'adminPass123');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the user to be saved and confirmation shown\n\n  await page.waitForSelector('div.confirmation-message');\n\n\n  // Confirmation shown\n\n  const confirmationMessage = await page.$('div.confirmation-message');\n\n  const confirmationText = await confirmationMessage.innerText();\n\n  console.log(confirmationText);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 105 tokens, 122.217 tokens-per-sec\nGeneration: 263 tokens, 28.552 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 88.122 tokens-per-sec\nGeneration: 384 tokens, 27.786 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/checkout');\n\n\n  // Checkout form is visible\n\n  const checkoutForm = await page.$('form.checkout');\n\n  expect(await checkoutForm.isVisible()).toBe(true);\n\n\n  // Enter valid payment details\n\n  await page.fill('input[name=\"card_number\"]', '4242424242424242');\n\n  await page.fill('input[name=\"expiry_date\"]', '12/25');\n\n  await page.fill('input[name=\"cvv\"]', '123');\n\n\n  // Submit payment\n\n  await page.click('button.checkout-submit');\n\n\n  // Check for order confirmation\n\n  const orderConfirmation = await page.$('div.order-confirmation');\n\n  expect(await orderConfirmation.isVisible()).toBe(true);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 108 tokens, 98.364 tokens-per-sec\nGeneration: 287 tokens, 27.409 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { test, expect } = require('@playwright/test');\n\n\ntest('Login with valid credentials', async ({ page }) => {\n\n  await page.goto('https://example.com/login');\n\n\n  // Assuming there are input fields with IDs 'username' and 'password'\n\n  await page.fill('#username', 'validUser');\n\n  await page.fill('#password', 'validPassword');\n\n\n  // Assuming there is a submit button with ID 'submit'\n\n  await page.click('#submit');\n\n\n  // Wait for the dashboard to load, assuming there's a specific element on the dashboard\n\n  await page.waitForSelector('#dashboard-content');\n\n\n  // Check if the dashboard content is visible\n\n  const dashboardContent = await page.$('#dashboard-content');\n\n  expect(dashboardContent).toBeVisible();\n\n});\n\n```\n==========\nPrompt: 111 tokens, 117.878 tokens-per-sec\nGeneration: 214 tokens, 28.059 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/login');\n\n\n  // Simulate entering invalid credentials\n\n  await page.fill('input[name=\"username\"]', 'invalidUser');\n\n  await page.fill('input[name=\"password\"]', 'wrongPassword');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the error message to appear\n\n  await page.waitForSelector('div.error-message');\n\n\n  // Check if the error message is displayed\n\n  const errorMessage = await page.$('div.error-message');\n\n  if (errorMessage) {\n\n    console.log('Error message is displayed correctly.');\n\n  } else {\n\n    console.error('Error message is not displayed correctly.');\n\n  }\n\n\n  // Check if the user stays on the login page\n\n  const isOnLoginPage = await page.url() === 'https://example.com/login';\n\n  if (isOnLoginPage) {\n\n    console.log('User stays on the login page.');\n\n  } else {\n\n    console.error('User navigated away from the login page.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 106 tokens, 130.015 tokens-per-sec\nGeneration: 351 tokens, 28.023 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { test, expect } = require('@playwright/test');\n\n\ntest('Password reset via email', async ({ page }) => {\n\n  // Navigate to the login page\n\n  await page.goto('https://example.com/login');\n\n\n  // Fill in the email and submit the form\n\n  await page.fill('input[name=\"email\"]', 'user@example.com');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the email to be sent and the reset link to appear\n\n  await page.waitForSelector('a[href*=\"reset-password\"]');\n\n\n  // Click the reset link\n\n  await page.click('a[href*=\"reset-password\"]');\n\n\n  // Fill in the new password and confirm it\n\n  await page.fill('input[name=\"new-password\"]', 'NewPassword123!');\n\n  await page.fill('input[name=\"confirm-password\"]', 'NewPassword123!');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Check for success message\n\n  await expect(page).toHaveText('Password reset successfully.');\n\n});\n\n```\n==========\nPrompt: 102 tokens, 85.651 tokens-per-sec\nGeneration: 300 tokens, 28.485 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "gen_count": 9,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/profile-update');\n\n\n  // Assuming there's a profile edit form with input fields for name, email, and password\n\n  await page.fill('input[name=\"name\"]', 'New Name');\n\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  await page.fill('input[name=\"password\"]', 'NewPassword123');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the confirmation message or the updated info to be shown\n\n  await page.waitForSelector('div[data-test=\"confirmation-message\"]');\n\n\n  // Check if the updated info is shown\n\n  const confirmationMessage = await page.$('div[data-test=\"confirmation-message\"]');\n\n  if (confirmationMessage) {\n\n    console.log('Profile updated successfully');\n\n  } else {\n\n    throw new Error('Profile update confirmation not found');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 103 tokens, 102.210 tokens-per-sec\nGeneration: 315 tokens, 28.596 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "gen_count": 6,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/checkout');\n\n\n  // Checkout form is visible\n\n  const checkoutForm = await page.$('form.checkout');\n\n  expect(await checkoutForm.isVisible()).toBe(true);\n\n\n  // Enter valid payment details\n\n  await page.fill('input[name=\"card_number\"]', '4242424242424242');\n\n  await page.fill('input[name=\"expiry_date\"]', '12/25');\n\n  await page.fill('input[name=\"cvv\"]', '123');\n\n\n  // Submit payment\n\n  await page.click('button.checkout-submit');\n\n\n  // Check for order confirmation\n\n  const orderConfirmation = await page.$('div.order-confirmation');\n\n  expect(await orderConfirmation.isVisible()).toBe(true);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 108 tokens, 46.337 tokens-per-sec\nGeneration: 287 tokens, 27.578 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/checkout');\n\n\n  // Checkout form is visible\n\n  const checkoutForm = await page.$('form.checkout');\n\n  expect(await checkoutForm.isVisible()).toBe(true);\n\n\n  // Enter valid payment details\n\n  await page.fill('input[name=\"card_number\"]', '4242424242424242');\n\n  await page.fill('input[name=\"expiry_date\"]', '12/25');\n\n  await page.fill('input[name=\"cvv\"]', '123');\n\n\n  // Submit payment\n\n  await page.click('button.checkout-submit');\n\n\n  // Check for order confirmation\n\n  const orderConfirmation = await page.$('div.order-confirmation');\n\n  expect(await orderConfirmation.isVisible()).toBe(true);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 108 tokens, 88.714 tokens-per-sec\nGeneration: 287 tokens, 28.472 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/login');\n\n\n  // Simulate entering invalid credentials\n\n  await page.fill('input[name=\"username\"]', 'invalidUser');\n\n  await page.fill('input[name=\"password\"]', 'wrongPassword');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the error message to appear\n\n  await page.waitForSelector('div.error-message');\n\n\n  // Check if the error message is displayed\n\n  const errorMessage = await page.$('div.error-message');\n\n  if (errorMessage) {\n\n    console.log('Error message is displayed correctly.');\n\n  } else {\n\n    console.error('Error message is not displayed correctly.');\n\n  }\n\n\n  // Check if the user stays on the login page\n\n  const isOnLoginPage = await page.url() === 'https://example.com/login';\n\n  if (isOnLoginPage) {\n\n    console.log('User stays on the login page.');\n\n  } else {\n\n    console.error('User navigated away from the login page.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 106 tokens, 127.576 tokens-per-sec\nGeneration: 351 tokens, 28.586 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 122.319 tokens-per-sec\nGeneration: 274 tokens, 28.155 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 83.673 tokens-per-sec\nGeneration: 274 tokens, 28.477 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/orders'); // Replace with the actual URL\n\n\n  // Check if order history is accessible\n\n  const orderHistoryLink = await page.$('a.order-history');\n\n  if (await orderHistoryLink) {\n\n    await orderHistoryLink.click();\n\n  } else {\n\n    throw new Error('Order history is not accessible.');\n\n  }\n\n\n  // Check if past orders are listed\n\n  const pastOrders = await page.$$('div.order-item');\n\n  if (pastOrders.length === 0) {\n\n    throw new Error('No past orders are listed.');\n\n  }\n\n\n  // Check if order details are viewable\n\n  const orderDetails = await page.$('div.order-details');\n\n  if (!orderDetails) {\n\n    throw new Error('Order details are not viewable.');\n\n  }\n\n\n  // Additional checks can be added here\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 103 tokens, 104.472 tokens-per-sec\nGeneration: 294 tokens, 28.581 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 1,
+      "ref_count": 1
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 134.967 tokens-per-sec\nGeneration: 274 tokens, 28.566 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/profile-update');\n\n\n  // Assuming there's a profile edit form with input fields for name, email, and password\n\n  await page.fill('input[name=\"name\"]', 'New Name');\n\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  await page.fill('input[name=\"password\"]', 'NewPassword123');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the confirmation message or the updated info to be shown\n\n  await page.waitForSelector('div[data-test=\"confirmation-message\"]');\n\n\n  // Check if the updated info is shown\n\n  const confirmationMessage = await page.$('div[data-test=\"confirmation-message\"]');\n\n  if (confirmationMessage) {\n\n    console.log('Profile updated successfully');\n\n  } else {\n\n    throw new Error('Profile update confirmation not found');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 103 tokens, 72.067 tokens-per-sec\nGeneration: 315 tokens, 28.412 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "gen_count": 6,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 81.087 tokens-per-sec\nGeneration: 384 tokens, 27.859 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 90.252 tokens-per-sec\nGeneration: 274 tokens, 28.301 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { test, expect } = require('@playwright/test');\n\n\ntest('Password reset via email', async ({ page }) => {\n\n  // Navigate to the login page\n\n  await page.goto('https://example.com/login');\n\n\n  // Fill in the email and submit the form\n\n  await page.fill('input[name=\"email\"]', 'user@example.com');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the email to be sent and the reset link to appear\n\n  await page.waitForSelector('a[href*=\"reset-password\"]');\n\n\n  // Click the reset link\n\n  await page.click('a[href*=\"reset-password\"]');\n\n\n  // Fill in the new password and confirm it\n\n  await page.fill('input[name=\"new-password\"]', 'NewPassword123!');\n\n  await page.fill('input[name=\"confirm-password\"]', 'NewPassword123!');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Check for success message\n\n  await expect(page).toHaveText('Password reset successfully.');\n\n});\n\n```\n==========\nPrompt: 102 tokens, 87.337 tokens-per-sec\nGeneration: 300 tokens, 28.194 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "gen_count": 9,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/profile-update');\n\n\n  // Assuming there's a profile edit form with input fields for name, email, and password\n\n  await page.fill('input[name=\"name\"]', 'New Name');\n\n  await page.fill('input[name=\"email\"]', 'newemail@example.com');\n\n  await page.fill('input[name=\"password\"]', 'NewPassword123');\n\n\n  // Submit the form\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the confirmation message or the updated info to be shown\n\n  await page.waitForSelector('div[data-test=\"confirmation-message\"]');\n\n\n  // Check if the updated info is shown\n\n  const confirmationMessage = await page.$('div[data-test=\"confirmation-message\"]');\n\n  if (confirmationMessage) {\n\n    console.log('Profile updated successfully');\n\n  } else {\n\n    throw new Error('Profile update confirmation not found');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 103 tokens, 94.477 tokens-per-sec\nGeneration: 315 tokens, 28.697 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.6667,
+      "recall": 1.0,
+      "f1": 0.8,
+      "gen_count": 6,
+      "ref_count": 4
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { test, expect } = require('@playwright/test');\n\n\ntest('Login with valid credentials', async ({ page }) => {\n\n  await page.goto('https://example.com/login');\n\n\n  // Assuming there are input fields with IDs 'username' and 'password'\n\n  await page.fill('#username', 'validUser');\n\n  await page.fill('#password', 'validPassword');\n\n\n  // Assuming there is a submit button with ID 'submit'\n\n  await page.click('#submit');\n\n\n  // Wait for the dashboard to load, assuming there's a specific element on the dashboard\n\n  await page.waitForSelector('#dashboard-content');\n\n\n  // Check if the dashboard content is visible\n\n  const dashboardContent = await page.$('#dashboard-content');\n\n  expect(dashboardContent).toBeVisible();\n\n});\n\n```\n==========\nPrompt: 111 tokens, 109.237 tokens-per-sec\nGeneration: 214 tokens, 28.747 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/checkout');\n\n\n  // Checkout form is visible\n\n  const checkoutForm = await page.$('form.checkout');\n\n  expect(await checkoutForm.isVisible()).toBe(true);\n\n\n  // Enter valid payment details\n\n  await page.fill('input[name=\"card_number\"]', '4242424242424242');\n\n  await page.fill('input[name=\"expiry_date\"]', '12/25');\n\n  await page.fill('input[name=\"cvv\"]', '123');\n\n\n  // Submit payment\n\n  await page.click('button.checkout-submit');\n\n\n  // Check for order confirmation\n\n  const orderConfirmation = await page.$('div.order-confirmation');\n\n  expect(await orderConfirmation.isVisible()).toBe(true);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 108 tokens, 122.597 tokens-per-sec\nGeneration: 287 tokens, 27.776 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/new-user-registration');\n\n\n  // Admin fills new user form\n\n  await page.fill('input[name=\"username\"]', 'adminUser');\n\n  await page.fill('input[name=\"email\"]', 'admin@example.com');\n\n  await page.fill('input[name=\"password\"]', 'adminPass123');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the user to be saved and confirmation shown\n\n  await page.waitForSelector('div.confirmation-message');\n\n\n  // Confirmation shown\n\n  const confirmationMessage = await page.$('div.confirmation-message');\n\n  const confirmationText = await confirmationMessage.innerText();\n\n  console.log(confirmationText);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 105 tokens, 85.642 tokens-per-sec\nGeneration: 263 tokens, 28.401 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 138.191 tokens-per-sec\nGeneration: 274 tokens, 28.747 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/checkout');\n\n\n  // Checkout form is visible\n\n  const checkoutForm = await page.$('form.checkout');\n\n  expect(await checkoutForm.isVisible()).toBe(true);\n\n\n  // Enter valid payment details\n\n  await page.fill('input[name=\"card_number\"]', '4242424242424242');\n\n  await page.fill('input[name=\"expiry_date\"]', '12/25');\n\n  await page.fill('input[name=\"cvv\"]', '123');\n\n\n  // Submit payment\n\n  await page.click('button.checkout-submit');\n\n\n  // Check for order confirmation\n\n  const orderConfirmation = await page.$('div.order-confirmation');\n\n  expect(await orderConfirmation.isVisible()).toBe(true);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 108 tokens, 157.266 tokens-per-sec\nGeneration: 287 tokens, 28.741 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/new-user-registration');\n\n\n  // Admin fills new user form\n\n  await page.fill('input[name=\"username\"]', 'adminUser');\n\n  await page.fill('input[name=\"email\"]', 'admin@example.com');\n\n  await page.fill('input[name=\"password\"]', 'adminPass123');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the user to be saved and confirmation shown\n\n  await page.waitForSelector('div.confirmation-message');\n\n\n  // Confirmation shown\n\n  const confirmationMessage = await page.$('div.confirmation-message');\n\n  const confirmationText = await confirmationMessage.innerText();\n\n  console.log(confirmationText);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 105 tokens, 75.146 tokens-per-sec\nGeneration: 263 tokens, 27.694 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 104.175 tokens-per-sec\nGeneration: 384 tokens, 28.502 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 102.708 tokens-per-sec\nGeneration: 384 tokens, 27.984 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/orders'); // Replace with the actual URL\n\n\n  // Check if order history is accessible\n\n  const orderHistoryLink = await page.$('a.order-history');\n\n  if (await orderHistoryLink) {\n\n    await orderHistoryLink.click();\n\n  } else {\n\n    throw new Error('Order history is not accessible.');\n\n  }\n\n\n  // Check if past orders are listed\n\n  const pastOrders = await page.$$('div.order-item');\n\n  if (pastOrders.length === 0) {\n\n    throw new Error('No past orders are listed.');\n\n  }\n\n\n  // Check if order details are viewable\n\n  const orderDetails = await page.$('div.order-details');\n\n  if (!orderDetails) {\n\n    throw new Error('Order details are not viewable.');\n\n  }\n\n\n  // Additional checks can be added here\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 103 tokens, 85.088 tokens-per-sec\nGeneration: 294 tokens, 28.560 tokens-per-sec\nPeak memory: 7.876 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 1,
+      "ref_count": 1
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 108.910 tokens-per-sec\nGeneration: 274 tokens, 28.655 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/new-user-registration');\n\n\n  // Admin fills new user form\n\n  await page.fill('input[name=\"username\"]', 'adminUser');\n\n  await page.fill('input[name=\"email\"]', 'admin@example.com');\n\n  await page.fill('input[name=\"password\"]', 'adminPass123');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the user to be saved and confirmation shown\n\n  await page.waitForSelector('div.confirmation-message');\n\n\n  // Confirmation shown\n\n  const confirmationMessage = await page.$('div.confirmation-message');\n\n  const confirmationText = await confirmationMessage.innerText();\n\n  console.log(confirmationText);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 105 tokens, 141.961 tokens-per-sec\nGeneration: 263 tokens, 28.717 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/new-user-registration');\n\n\n  // Admin fills new user form\n\n  await page.fill('input[name=\"username\"]', 'adminUser');\n\n  await page.fill('input[name=\"email\"]', 'admin@example.com');\n\n  await page.fill('input[name=\"password\"]', 'adminPass123');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the user to be saved and confirmation shown\n\n  await page.waitForSelector('div.confirmation-message');\n\n\n  // Confirmation shown\n\n  const confirmationMessage = await page.$('div.confirmation-message');\n\n  const confirmationText = await confirmationMessage.innerText();\n\n  console.log(confirmationText);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 105 tokens, 86.087 tokens-per-sec\nGeneration: 263 tokens, 28.520 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/new-user-registration');\n\n\n  // Admin fills new user form\n\n  await page.fill('input[name=\"username\"]', 'adminUser');\n\n  await page.fill('input[name=\"email\"]', 'admin@example.com');\n\n  await page.fill('input[name=\"password\"]', 'adminPass123');\n\n  await page.click('button[type=\"submit\"]');\n\n\n  // Wait for the user to be saved and confirmation shown\n\n  await page.waitForSelector('div.confirmation-message');\n\n\n  // Confirmation shown\n\n  const confirmationMessage = await page.$('div.confirmation-message');\n\n  const confirmationText = await confirmationMessage.innerText();\n\n  console.log(confirmationText);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 105 tokens, 99.417 tokens-per-sec\nGeneration: 263 tokens, 28.647 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.6667,
+      "recall": 0.8,
+      "f1": 0.7273,
+      "gen_count": 6,
+      "ref_count": 5
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 171.923 tokens-per-sec\nGeneration: 274 tokens, 28.702 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n\n  await page.goto('https://example.com/orders'); // Replace with the actual URL\n\n\n  // Check if order history is accessible\n\n  const orderHistoryLink = await page.$('a.order-history');\n\n  if (await orderHistoryLink) {\n\n    await orderHistoryLink.click();\n\n  } else {\n\n    throw new Error('Order history is not accessible.');\n\n  }\n\n\n  // Check if past orders are listed\n\n  const pastOrders = await page.$$('div.order-item');\n\n  if (pastOrders.length === 0) {\n\n    throw new Error('No past orders are listed.');\n\n  }\n\n\n  // Check if order details are viewable\n\n  const orderDetails = await page.$('div.order-details');\n\n  if (!orderDetails) {\n\n    throw new Error('Order details are not viewable.');\n\n  }\n\n\n  // Additional checks can be added here\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 103 tokens, 190.835 tokens-per-sec\nGeneration: 294 tokens, 27.656 tokens-per-sec\nPeak memory: 7.853 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 1,
+      "ref_count": 1
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if Add to Cart button is visible\n\n  const addToCartButton = await page.$('button.add-to-cart');\n\n  if (await addToCartButton.isVisible()) {\n\n    // Click Add to Cart button\n\n    await addToCartButton.click();\n\n\n    // Wait for the cart count to increment\n\n    const initialCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n    await page.waitForSelector('.cart-count');\n\n    const updatedCartCount = await page.evaluate(() => document.querySelector('.cart-count').textContent);\n\n\n    // Check if cart count has incremented\n\n    if (updatedCartCount > initialCartCount) {\n\n      // Check if the item appears in the cart\n\n      const cartItem = await page.$('.cart-item');\n\n      if (await cartItem.isVisible()) {\n\n        console.log('Product added to cart successfully.');\n\n      } else {\n\n        console.error('Product did not appear in the cart.');\n\n      }\n\n    } else {\n\n      console.error('Cart count did not increment.');\n\n    }\n\n  } else {\n\n    console.error('Add to Cart button is not visible.');\n\n  }\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 110 tokens, 96.804 tokens-per-sec\nGeneration: 384 tokens, 31.400 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.5,
+      "recall": 0.3333,
+      "f1": 0.4,
+      "gen_count": 2,
+      "ref_count": 3
+    },
+    {
+      "generated": "==========\n```javascript\n\nconst { chromium } = require('playwright');\n\n\n(async () => {\n\n  const browser = await chromium.launch();\n\n  const page = await browser.newPage();\n\n  await page.goto('https://example.com/products');\n\n\n  // Check if search bar is visible\n\n  const searchBar = await page.$('input[type=\"search\"]');\n\n  await expect(searchBar).toBeVisible();\n\n\n  // Perform search\n\n  const searchText = 'laptop';\n\n  await searchBar.fill(searchText);\n\n  await searchBar.press('Enter');\n\n\n  // Check if results appear\n\n  const results = await page.locator('ul.product-list');\n\n  await expect(results).toBeVisible();\n\n\n  // Check if results match keyword\n\n  const productNames = await page.locator('li.product-item').allContents();\n\n  const matches = productNames.filter(name => name.includes(searchText));\n\n  await expect(matches).toHaveLength(matches.length > 0);\n\n\n  await browser.close();\n\n})();\n\n```\n==========\nPrompt: 104 tokens, 440.643 tokens-per-sec\nGeneration: 274 tokens, 31.650 tokens-per-sec\nPeak memory: 7.882 GB",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    }
+  ]
+}

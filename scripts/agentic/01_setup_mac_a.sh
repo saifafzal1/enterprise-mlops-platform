@@ -27,7 +27,7 @@ print('MPS available:', torch.backends.mps.is_available())
 print('MPS built:',     torch.backends.mps.is_built())
 " | tee -a "$LOG"
 
-python3 -c "import mlx; print('MLX version:', mlx.__version__)" | tee -a "$LOG"
+python3 -c "import mlx.core; print('MLX version:', mlx.core.__version__)" | tee -a "$LOG"
 
 # ── Pull base models to local cache (~/.cache/huggingface) ───────────────────
 echo "Pulling Phi-3-mini tokenizer/config (not weights) for offline check..." | tee -a "$LOG"

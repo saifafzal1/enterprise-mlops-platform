@@ -60,19 +60,45 @@ def _call_anthropic(story, criteria, framework, model="claude-haiku-4-5"):
     return resp.content[0].text.strip()
 
 
-def _call_gemini(story, criteria, framework, model="gemini-1.5-flash"):
-    import google.generativeai as genai
-    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-    m = genai.GenerativeModel(model,
-        system_instruction=SYSTEM_PROMPT[framework])
-    resp = m.generate_content(USER_TEMPLATE.format(story=story, criteria=criteria))
-    return resp.text.strip()
+def _call_mlx_local(story, criteria, framework, model_id, prompt_fn):
+    """Zero-shot inference via local MLX — works for any mlx-compatible HF model."""
+    import subprocess, sys, shutil
+    mlx_lm = shutil.which("mlx_lm.generate") or f"{os.path.dirname(sys.executable)}/mlx_lm.generate"
+    prompt = prompt_fn(story, criteria, framework)
+    result = subprocess.run(
+        [mlx_lm, "--model", model_id, "--prompt", prompt, "--max-tokens", "800"],
+        capture_output=True, text=True, timeout=600,
+    )
+    output = result.stdout.strip()
+    return output
+
+
+def _phi3_prompt(story, criteria, framework):
+    out = (
+        f"<|system|>\n{SYSTEM_PROMPT[framework]}<|end|>\n"
+        f"<|user|>\n{USER_TEMPLATE.format(story=story, criteria=criteria)}<|end|>\n"
+        f"<|assistant|>\n"
+    )
+    return out
+
+
+def _gemma_prompt(story, criteria, framework):
+    out = (
+        f"<start_of_turn>user\n"
+        f"{SYSTEM_PROMPT[framework]}\n\n"
+        f"{USER_TEMPLATE.format(story=story, criteria=criteria)}"
+        f"<end_of_turn>\n<start_of_turn>model\n"
+    )
+    return out
 
 
 MODEL_CALLERS = {
     "gpt-4o-mini":        lambda s, c, f: _call_openai(s, c, f, "gpt-4o-mini"),
     "claude-haiku-4-5":   lambda s, c, f: _call_anthropic(s, c, f, "claude-haiku-4-5"),
-    "gemini-1.5-flash":   lambda s, c, f: _call_gemini(s, c, f, "gemini-1.5-flash"),
+    "phi3-mini-zeroshot": lambda s, c, f: _call_mlx_local(s, c, f,
+                              "microsoft/Phi-3-mini-4k-instruct", _phi3_prompt),
+    "gemma4-zeroshot":    lambda s, c, f: _call_mlx_local(s, c, f,
+                              "google/gemma-3-4b-it", _gemma_prompt),
 }
 
 

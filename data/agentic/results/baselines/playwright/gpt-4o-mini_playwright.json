@@ -1,0 +1,389 @@
+{
+  "model": "gpt-4o-mini",
+  "framework": "playwright",
+  "metrics": {
+    "precision": 0.45697857142857146,
+    "recall": 0.7583333333333334,
+    "f1": 0.5468309523809524
+  },
+  "results": [
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Check if the item appears in the cart\n    const cartItem = await page.locator('.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('span.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Verify that the item appears in the cart\n    const cartItem = await page.locator('div.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Update profile information', async ({ page }) => {\n    // Step 1: Log in as a registered user\n    await page.goto('https://example.com/login');\n    await page.fill('input[name=\"username\"]', 'testuser');\n    await page.fill('input[name=\"password\"]', 'password123');\n    await page.click('button[type=\"submit\"]');\n    await page.waitForNavigation();\n\n    // Step 2: Navigate to the profile page\n    await page.goto('https://example.com/profile');\n\n    // Step 3: Edit profile information\n    await page.fill('input[name=\"firstName\"]', 'UpdatedFirstName');\n    await page.fill('input[name=\"lastName\"]', 'UpdatedLastName');\n    await page.fill('input[name=\"email\"]', 'updatedemail@example.com');\n    await page.click('button[type=\"submit\"]');\n\n    // Step 4: Verify changes are saved\n    await page.waitForSelector('.success-message'); // Assuming there's a success message\n    expect(await page.locator('.success-message').textContent()).toContain('Profile updated successfully');\n\n    // Step 5: Verify updated information is shown\n    expect(await page.inputValue('input[name=\"firstName\"]')).toBe('UpdatedFirstName');\n    expect(await page.inputValue('input[name=\"lastName\"]')).toBe('UpdatedLastName');\n    expect(await page.inputValue('input[name=\"email\"]')).toBe('updatedemail@example.com');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.4,
+      "recall": 1.0,
+      "f1": 0.5714,
+      "gen_count": 10,
+      "ref_count": 4
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('span.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Check if the item appears in the cart\n    const cartItem = await page.locator('div.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('should show error message on invalid credentials', async ({ page }) => {\n    // Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Enter invalid username and password\n    await page.fill('input[name=\"username\"]', 'invalidUser');\n    await page.fill('input[name=\"password\"]', 'wrongPassword');\n\n    // Click the login button\n    await page.click('button[type=\"submit\"]');\n\n    // Assert that the error message is displayed\n    const errorMessage = await page.locator('.error-message');\n    await expect(errorMessage).toBeVisible();\n    await expect(errorMessage).toHaveText('Invalid username or password');\n\n    // Assert that the user is still on the login page\n    await expect(page).toHaveURL('https://example.com/login');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Admin creates a new user account', async ({ page }) => {\n    // Navigate to the admin login page\n    await page.goto('https://example.com/admin/login');\n\n    // Log in as an admin\n    await page.fill('input[name=\"username\"]', 'adminUsername');\n    await page.fill('input[name=\"password\"]', 'adminPassword');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for navigation to the admin dashboard\n    await page.waitForNavigation();\n\n    // Navigate to the new user form\n    await page.click('text=Users');\n    await page.click('text=Add New User');\n\n    // Fill in the new user form\n    await page.fill('input[name=\"firstName\"]', 'John');\n    await page.fill('input[name=\"lastName\"]', 'Doe');\n    await page.fill('input[name=\"email\"]', 'john.doe@example.com');\n    await page.fill('input[name=\"password\"]', 'securePassword123');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for confirmation message\n    const confirmationMessage = await page.locator('.confirmation-message');\n    await expect(confirmationMessage).toHaveText('User created successfully');\n\n    // Optionally, verify the user is saved in the user list\n    await page.click('text=Users');\n    const userRow = await page.locator('text=John Doe');\n    await expect(userRow).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.2857,
+      "recall": 0.8,
+      "f1": 0.4211,
+      "gen_count": 14,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Admin creates a new user account', async ({ page }) => {\n    // Navigate to the admin login page\n    await page.goto('https://example.com/admin/login');\n\n    // Log in as admin\n    await page.fill('input[name=\"username\"]', 'adminUser');\n    await page.fill('input[name=\"password\"]', 'adminPassword');\n    await page.click('button[type=\"submit\"]');\n\n    // Navigate to the new user form\n    await page.goto('https://example.com/admin/users/new');\n\n    // Fill in the new user form\n    await page.fill('input[name=\"firstName\"]', 'John');\n    await page.fill('input[name=\"lastName\"]', 'Doe');\n    await page.fill('input[name=\"email\"]', 'john.doe@example.com');\n    await page.fill('input[name=\"password\"]', 'securePassword123');\n    await page.click('button[type=\"submit\"]');\n\n    // Verify user is saved\n    await page.waitForSelector('.notification-success');\n    const confirmationMessage = await page.textContent('.notification-success');\n    expect(confirmationMessage).toContain('User created successfully');\n\n    // Optionally, verify the user appears in the user list\n    await page.goto('https://example.com/admin/users');\n    const userRow = await page.locator('text=John Doe');\n    expect(await userRow.count()).toBe(1);\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.3333,
+      "recall": 0.8,
+      "f1": 0.4706,
+      "gen_count": 12,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('span.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Check if the item appears in the cart\n    const cartItem = await page.locator('div.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Complete checkout process with valid payment details', async ({ page }) => {\n    // Navigate to the checkout page\n    await page.goto('https://example.com/checkout');\n\n    // Check if the checkout form is visible\n    const checkoutForm = await page.locator('#checkout-form');\n    await expect(checkoutForm).toBeVisible();\n\n    // Fill in the payment details\n    await page.fill('#card-number', '4111111111111111'); // Example valid card number\n    await page.fill('#card-expiry', '12/25'); // Example expiry date\n    await page.fill('#card-cvc', '123'); // Example CVC\n\n    // Submit the checkout form\n    await page.click('#submit-button');\n\n    // Wait for the order confirmation to be shown\n    const confirmationMessage = await page.locator('#order-confirmation');\n    await expect(confirmationMessage).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('User can log in with valid credentials', async ({ page }) => {\n    // Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Check if the login page loads\n    await expect(page).toHaveTitle(/Login/);\n    await expect(page.locator('input[name=\"username\"]')).toBeVisible();\n    await expect(page.locator('input[name=\"password\"]')).toBeVisible();\n\n    // Enter valid credentials\n    await page.fill('input[name=\"username\"]', 'validUser');\n    await page.fill('input[name=\"password\"]', 'validPassword');\n\n    // Click the login button\n    await page.click('button[type=\"submit\"]');\n\n    // Check for redirection to the dashboard\n    await expect(page).toHaveURL('https://example.com/dashboard');\n    await expect(page.locator('h1')).toHaveText('Dashboard');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Show error message on invalid credentials', async ({ page }) => {\n    // Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Enter invalid credentials\n    await page.fill('input[name=\"username\"]', 'invalidUser');\n    await page.fill('input[name=\"password\"]', 'wrongPassword');\n\n    // Click the login button\n    await page.click('button[type=\"submit\"]');\n\n    // Assert that the error message is displayed\n    const errorMessage = await page.locator('.error-message');\n    await expect(errorMessage).toBeVisible();\n    await expect(errorMessage).toHaveText('Invalid username or password.');\n\n    // Assert that the user stays on the login page\n    await expect(page).toHaveURL('https://example.com/login');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Reset password via email', async ({ page }) => {\n    // Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Click on the \"Forgot Password?\" link\n    await page.click('text=Forgot Password?');\n\n    // Enter a valid registered email\n    await page.fill('input[name=\"email\"]', 'user@example.com');\n\n    // Click on the \"Reset Password\" button\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for the success message to appear\n    const successMessage = await page.locator('text=Reset link sent to your email').waitFor();\n\n    // Assert that the success message is visible\n    expect(successMessage).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.6,
+      "recall": 1.0,
+      "f1": 0.75,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Update profile information', async ({ page }) => {\n    // Navigate to the profile page\n    await page.goto('https://example.com/profile');\n\n    // Log in as a registered user\n    await page.fill('input[name=\"username\"]', 'testuser');\n    await page.fill('input[name=\"password\"]', 'password123');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for navigation to profile page\n    await page.waitForNavigation();\n\n    // Verify the profile form is editable\n    const nameInput = page.locator('input[name=\"name\"]');\n    await expect(nameInput).toBeEditable();\n\n    // Update profile information\n    await nameInput.fill('New Name');\n    await page.fill('input[name=\"email\"]', 'newemail@example.com');\n    await page.fill('input[name=\"phone\"]', '1234567890');\n\n    // Save changes\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for success message\n    await page.waitForSelector('.success-message');\n\n    // Verify the updated information is shown\n    await expect(page.locator('input[name=\"name\"]')).toHaveValue('New Name');\n    await expect(page.locator('input[name=\"email\"]')).toHaveValue('newemail@example.com');\n    await expect(page.locator('input[name=\"phone\"]')).toHaveValue('1234567890');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "gen_count": 8,
+      "ref_count": 4
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Complete checkout process with valid payment details', async ({ page }) => {\n    // Navigate to the checkout page\n    await page.goto('https://example.com/checkout');\n\n    // Check if the checkout form is visible\n    const checkoutForm = await page.locator('#checkout-form');\n    await expect(checkoutForm).toBeVisible();\n\n    // Fill in the payment details\n    await page.fill('#card-number', '4111111111111111'); // Example valid card number\n    await page.fill('#expiry-date', '12/25'); // Example expiry date\n    await page.fill('#cvv', '123'); // Example CVV\n\n    // Submit the checkout form\n    await page.click('#submit-button');\n\n    // Wait for the order confirmation to be visible\n    const orderConfirmation = await page.locator('#order-confirmation');\n    await expect(orderConfirmation).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Complete checkout process with valid payment details', async ({ page }) => {\n    // Navigate to the checkout page\n    await page.goto('https://example.com/checkout');\n\n    // Check if the checkout form is visible\n    const checkoutForm = await page.locator('#checkout-form');\n    await expect(checkoutForm).toBeVisible();\n\n    // Fill in the payment details\n    await page.fill('#card-number', '4111111111111111'); // Example valid card number\n    await page.fill('#expiry-date', '12/25'); // Example expiry date\n    await page.fill('#cvv', '123'); // Example CVV\n\n    // Submit the payment\n    await page.click('#submit-payment');\n\n    // Wait for the order confirmation to be visible\n    const orderConfirmation = await page.locator('#order-confirmation');\n    await expect(orderConfirmation).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('should show error message on invalid credentials', async ({ page }) => {\n    // Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Enter invalid credentials\n    await page.fill('input[name=\"username\"]', 'invalidUser');\n    await page.fill('input[name=\"password\"]', 'wrongPassword');\n\n    // Click the login button\n    await page.click('button[type=\"submit\"]');\n\n    // Assert that the error message is displayed\n    const errorMessage = await page.locator('.error-message');\n    await expect(errorMessage).toBeVisible();\n    await expect(errorMessage).toHaveText('Invalid username or password');\n\n    // Assert that the user is still on the login page\n    await expect(page).toHaveURL('https://example.com/login');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should show error on invalid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'wrong@example.com');\n  await page.fill('[data-testid=\"password\"]', 'wrongpass');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page.locator('[data-testid=\"error-msg\"]')).toContainText('Invalid credentials');\n  await expect(page).toHaveURL(/login/);\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the website\n    await page.goto('https://example.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const keyword = 'laptop';\n    await searchBar.fill(keyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const results = await page.locator('.search-results');\n    await expect(results).toBeVisible();\n\n    // Check if results match the keyword\n    const resultItems = await results.locator('.result-item');\n    const resultCount = await resultItems.count();\n    \n    for (let i = 0; i < resultCount; i++) {\n        const itemText = await resultItems.nth(i).innerText();\n        await expect(itemText.toLowerCase()).toContain(keyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the website\n    await page.goto('https://example.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const keyword = 'laptop';\n    await searchBar.fill(keyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const results = await page.locator('.search-results');\n    await expect(results).toBeVisible();\n\n    // Check if results match the keyword\n    const resultItems = await results.locator('.result-item');\n    const resultCount = await resultItems.count();\n    \n    for (let i = 0; i < resultCount; i++) {\n        const resultText = await resultItems.nth(i).innerText();\n        expect(resultText.toLowerCase()).toContain(keyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('View order history', async ({ page }) => {\n    // Step 1: Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Step 2: Log in as a registered user\n    await page.fill('input[name=\"username\"]', 'testuser');\n    await page.fill('input[name=\"password\"]', 'password123');\n    await page.click('button[type=\"submit\"]');\n\n    // Step 3: Navigate to the order history page\n    await page.goto('https://example.com/order-history');\n\n    // Step 4: Verify order history is accessible\n    await expect(page).toHaveURL('https://example.com/order-history');\n    await expect(page.locator('h1')).toHaveText('Order History');\n\n    // Step 5: Verify past orders are listed\n    const orders = await page.locator('.order-item');\n    await expect(orders).toHaveCountGreaterThan(0);\n\n    // Step 6: Click on the first order to view details\n    await orders.first().click();\n\n    // Step 7: Verify order details are viewable\n    await expect(page.locator('.order-details')).toBeVisible();\n    await expect(page.locator('.order-number')).toBeVisible();\n    await expect(page.locator('.order-date')).toBeVisible();\n    await expect(page.locator('.order-total')).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.1667,
+      "recall": 1.0,
+      "f1": 0.2857,
+      "gen_count": 6,
+      "ref_count": 1
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the website\n    await page.goto('https://example.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const keyword = 'laptop';\n    await searchBar.fill(keyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const results = await page.locator('.search-results');\n    await expect(results).toBeVisible();\n\n    // Check if results match the keyword\n    const resultItems = await results.locator('.result-item');\n    const resultCount = await resultItems.count();\n\n    for (let i = 0; i < resultCount; i++) {\n        const resultText = await resultItems.nth(i).innerText();\n        expect(resultText.toLowerCase()).toContain(keyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Update profile information', async ({ page }) => {\n    // Step 1: Log in as a registered user\n    await page.goto('https://example.com/login');\n    await page.fill('input[name=\"username\"]', 'testuser');\n    await page.fill('input[name=\"password\"]', 'password123');\n    await page.click('button[type=\"submit\"]');\n    await expect(page).toHaveURL('https://example.com/dashboard');\n\n    // Step 2: Navigate to the profile page\n    await page.click('a[href=\"/profile\"]');\n    await expect(page).toHaveURL('https://example.com/profile');\n\n    // Step 3: Edit profile information\n    await page.fill('input[name=\"firstName\"]', 'UpdatedFirstName');\n    await page.fill('input[name=\"lastName\"]', 'UpdatedLastName');\n    await page.fill('input[name=\"email\"]', 'updatedemail@example.com');\n\n    // Step 4: Save changes\n    await page.click('button[type=\"submit\"]');\n    await expect(page.locator('.notification')).toHaveText('Profile updated successfully');\n\n    // Step 5: Verify updated information is shown\n    await expect(page.locator('input[name=\"firstName\"]')).toHaveValue('UpdatedFirstName');\n    await expect(page.locator('input[name=\"lastName\"]')).toHaveValue('UpdatedLastName');\n    await expect(page.locator('input[name=\"email\"]')).toHaveValue('updatedemail@example.com');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.3636,
+      "recall": 1.0,
+      "f1": 0.5333,
+      "gen_count": 11,
+      "ref_count": 4
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Verify that the item appears in the cart\n    const cartItem = await page.locator('.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the application\n    await page.goto('https://your-application-url.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const searchKeyword = 'laptop';\n    await searchBar.fill(searchKeyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const resultsContainer = await page.locator('.results-container');\n    await expect(resultsContainer).toBeVisible();\n\n    // Check if results match the keyword\n    const results = await resultsContainer.locator('.result-item');\n    const resultsCount = await results.count();\n    \n    for (let i = 0; i < resultsCount; i++) {\n        const resultText = await results.nth(i).innerText();\n        expect(resultText.toLowerCase()).toContain(searchKeyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Reset password via email', async ({ page }) => {\n    // Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Click on the \"Forgot Password?\" link\n    await page.click('text=Forgot Password?');\n\n    // Enter a valid email address\n    await page.fill('input[name=\"email\"]', 'validuser@example.com');\n\n    // Click on the \"Send Reset Link\" button\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for the success message to appear\n    const successMessage = await page.locator('text=Reset link sent to your email').waitFor();\n\n    // Assert that the success message is visible\n    expect(await successMessage.isVisible()).toBe(true);\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should send reset email for valid account', async ({ page }) => {\n  await page.goto('/forgot-password');\n  await page.fill('[data-testid=\"email-input\"]', 'user@example.com');\n  await page.click('[data-testid=\"send-reset\"]');\n  await expect(page.locator('[data-testid=\"success-msg\"]')).toContainText('Check your email');\n});",
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "gen_count": 4,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Update profile information', async ({ page }) => {\n    // Step 1: Navigate to the profile page\n    await page.goto('https://example.com/profile');\n\n    // Step 2: Ensure the profile form is editable\n    const nameInput = page.locator('input[name=\"name\"]');\n    const emailInput = page.locator('input[name=\"email\"]');\n    await expect(nameInput).toBeEditable();\n    await expect(emailInput).toBeEditable();\n\n    // Step 3: Update profile information\n    await nameInput.fill('New Name');\n    await emailInput.fill('newemail@example.com');\n\n    // Step 4: Save changes\n    const saveButton = page.locator('button[type=\"submit\"]');\n    await saveButton.click();\n\n    // Step 5: Verify changes are saved\n    await expect(page.locator('text=Profile updated successfully')).toBeVisible();\n\n    // Step 6: Refresh the page to check updated info\n    await page.reload();\n\n    // Step 7: Verify updated information is shown\n    await expect(nameInput).toHaveValue('New Name');\n    await expect(emailInput).toHaveValue('newemail@example.com');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should update profile information', async ({ page }) => {\n  await page.goto('/profile/edit');\n  await page.fill('[data-testid=\"display-name\"]', 'New Name');\n  await page.fill('[data-testid=\"phone\"]', '+1234567890');\n  await page.click('[data-testid=\"save-profile\"]');\n  await expect(page.locator('[data-testid=\"profile-name\"]')).toContainText('New Name');\n});",
+      "precision": 0.3333,
+      "recall": 0.25,
+      "f1": 0.2857,
+      "gen_count": 3,
+      "ref_count": 4
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('User can log in with valid credentials', async ({ page }) => {\n    // Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Verify that the login page loads\n    await expect(page).toHaveTitle(/Login/);\n    await expect(page.locator('input[name=\"username\"]')).toBeVisible();\n    await expect(page.locator('input[name=\"password\"]')).toBeVisible();\n    \n    // Enter valid credentials\n    await page.fill('input[name=\"username\"]', 'validUser');\n    await page.fill('input[name=\"password\"]', 'validPassword');\n\n    // Submit the login form\n    await page.click('button[type=\"submit\"]');\n\n    // Verify that the user is redirected to the dashboard\n    await expect(page).toHaveURL('https://example.com/dashboard');\n    await expect(page.locator('h1')).toHaveText('Welcome to your dashboard');\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should login with valid credentials', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('[data-testid=\"email\"]', 'user@example.com');\n  await page.fill('[data-testid=\"password\"]', 'Password123!');\n  await page.click('[data-testid=\"submit\"]');\n  await expect(page).toHaveURL(/dashboard/);\n  await expect(page.locator('[data-testid=\"welcome-msg\"]')).toBeVisible();\n});",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Complete checkout process with valid payment details', async ({ page }) => {\n    // Navigate to the checkout page\n    await page.goto('https://example.com/checkout');\n\n    // Check if the checkout form is visible\n    const checkoutForm = await page.locator('#checkout-form');\n    await expect(checkoutForm).toBeVisible();\n\n    // Fill in the payment details\n    await page.fill('#card-number', '4111111111111111'); // Example valid card number\n    await page.fill('#card-expiry', '12/25'); // Example expiry date\n    await page.fill('#card-cvc', '123'); // Example CVC\n\n    // Submit the checkout form\n    await page.click('#submit-button');\n\n    // Wait for the order confirmation to be shown\n    const confirmationMessage = await page.locator('#order-confirmation');\n    await expect(confirmationMessage).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Admin creates a new user account', async ({ page }) => {\n    // Navigate to the admin login page\n    await page.goto('https://example.com/admin/login');\n\n    // Log in as admin\n    await page.fill('input[name=\"username\"]', 'adminUser');\n    await page.fill('input[name=\"password\"]', 'adminPassword');\n    await page.click('button[type=\"submit\"]');\n\n    // Navigate to the new user form\n    await page.goto('https://example.com/admin/users/new');\n\n    // Fill in the new user form\n    await page.fill('input[name=\"firstName\"]', 'John');\n    await page.fill('input[name=\"lastName\"]', 'Doe');\n    await page.fill('input[name=\"email\"]', 'john.doe@example.com');\n    await page.fill('input[name=\"password\"]', 'securePassword123');\n    await page.click('button[type=\"submit\"]');\n\n    // Verify user is saved\n    await expect(page).toHaveURL('https://example.com/admin/users');\n    await expect(page.locator('text=User created successfully')).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.3636,
+      "recall": 0.8,
+      "f1": 0.5,
+      "gen_count": 11,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the website\n    await page.goto('https://example.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const keyword = 'laptop';\n    await searchBar.fill(keyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const results = await page.locator('.search-results');\n    await expect(results).toBeVisible();\n\n    // Check if results match the keyword\n    const resultItems = await results.locator('.result-item');\n    const resultCount = await resultItems.count();\n\n    for (let i = 0; i < resultCount; i++) {\n        const resultText = await resultItems.nth(i).innerText();\n        expect(resultText.toLowerCase()).toContain(keyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Complete checkout process with valid payment details', async ({ page }) => {\n    // Navigate to the checkout page\n    await page.goto('https://example.com/checkout');\n\n    // Check if the checkout form is visible\n    const checkoutForm = await page.locator('#checkout-form');\n    await expect(checkoutForm).toBeVisible();\n\n    // Fill in the payment details\n    await page.fill('#card-number', '4111111111111111'); // Example valid card number\n    await page.fill('#card-expiry', '12/25'); // Example expiry date\n    await page.fill('#card-cvc', '123'); // Example CVC\n\n    // Submit the checkout form\n    await page.click('#submit-button');\n\n    // Wait for the order confirmation to be shown\n    const confirmationMessage = await page.locator('#order-confirmation');\n    await expect(confirmationMessage).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should complete checkout with valid payment', async ({ page }) => {\n  await page.goto('/checkout');\n  await page.fill('[data-testid=\"card-number\"]', '4111111111111111');\n  await page.fill('[data-testid=\"expiry\"]', '12/26');\n  await page.fill('[data-testid=\"cvv\"]', '123');\n  await page.click('[data-testid=\"place-order\"]');\n  await expect(page.locator('[data-testid=\"order-confirmation\"]')).toBeVisible();\n  await expect(page.locator('[data-testid=\"order-id\"]')).not.toBeEmpty();\n});",
+      "precision": 0.7143,
+      "recall": 1.0,
+      "f1": 0.8333,
+      "gen_count": 7,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Admin creates a new user account', async ({ page }) => {\n    // Navigate to the admin login page\n    await page.goto('https://example.com/admin/login');\n\n    // Log in as an admin\n    await page.fill('input[name=\"username\"]', 'adminUser');\n    await page.fill('input[name=\"password\"]', 'adminPassword');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for navigation to the admin dashboard\n    await page.waitForNavigation();\n\n    // Navigate to the new user form\n    await page.click('text=Users');\n    await page.click('text=Add New User');\n\n    // Fill in the new user form\n    await page.fill('input[name=\"firstName\"]', 'John');\n    await page.fill('input[name=\"lastName\"]', 'Doe');\n    await page.fill('input[name=\"email\"]', 'john.doe@example.com');\n    await page.fill('input[name=\"password\"]', 'securePassword123');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for confirmation message\n    const confirmationMessage = await page.locator('.confirmation-message');\n    await expect(confirmationMessage).toHaveText('User saved successfully');\n\n    // Optionally, verify the user is listed in the user management\n    await page.click('text=Users');\n    const userRow = await page.locator('text=John Doe');\n    await expect(userRow).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.2857,
+      "recall": 0.8,
+      "f1": 0.4211,
+      "gen_count": 14,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('span.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Verify that the item appears in the cart\n    const cartItem = await page.locator('div.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Check if the item appears in the cart\n    const cartItem = await page.locator('.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('View order history', async ({ page }) => {\n    // Step 1: Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Step 2: Log in as a registered user\n    await page.fill('input[name=\"username\"]', 'testuser');\n    await page.fill('input[name=\"password\"]', 'password123');\n    await page.click('button[type=\"submit\"]');\n\n    // Step 3: Navigate to the order history page\n    await page.goto('https://example.com/order-history');\n\n    // Step 4: Verify order history is accessible\n    await expect(page).toHaveURL('https://example.com/order-history');\n    await expect(page.locator('h1')).toHaveText('Order History');\n\n    // Step 5: Verify past orders are listed\n    const orders = await page.locator('.order-item');\n    await expect(orders).toHaveCountGreaterThan(0);\n\n    // Step 6: Click on the first order to view details\n    await orders.first().click();\n\n    // Step 7: Verify order details are viewable\n    await expect(page.locator('.order-details')).toBeVisible();\n    await expect(page.locator('.order-number')).toBeVisible();\n    await expect(page.locator('.order-date')).toBeVisible();\n    await expect(page.locator('.order-total')).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.1667,
+      "recall": 1.0,
+      "f1": 0.2857,
+      "gen_count": 6,
+      "ref_count": 1
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the homepage\n    await page.goto('https://example.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const keyword = 'laptop';\n    await searchBar.fill(keyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const results = await page.locator('.search-results');\n    await expect(results).toBeVisible();\n\n    // Check if results match the keyword\n    const resultItems = await results.locator('.result-item');\n    const resultCount = await resultItems.count();\n    \n    for (let i = 0; i < resultCount; i++) {\n        const itemText = await resultItems.nth(i).innerText();\n        expect(itemText.toLowerCase()).toContain(keyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Admin creates a new user account', async ({ page }) => {\n    // Navigate to the admin login page\n    await page.goto('https://example.com/admin/login');\n\n    // Log in as an admin\n    await page.fill('input[name=\"username\"]', 'adminUser');\n    await page.fill('input[name=\"password\"]', 'adminPassword');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for navigation to the admin dashboard\n    await page.waitForNavigation();\n\n    // Navigate to the new user form\n    await page.click('text=Users');\n    await page.click('text=Add New User');\n\n    // Fill out the new user form\n    await page.fill('input[name=\"firstName\"]', 'John');\n    await page.fill('input[name=\"lastName\"]', 'Doe');\n    await page.fill('input[name=\"email\"]', 'john.doe@example.com');\n    await page.fill('input[name=\"password\"]', 'securePassword123');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for confirmation message\n    const confirmationMessage = await page.locator('.confirmation-message');\n    await expect(confirmationMessage).toBeVisible();\n    await expect(confirmationMessage).toHaveText('User created successfully');\n\n    // Optionally, verify the user is saved in the user list\n    await page.click('text=Users');\n    const userRow = await page.locator('text=John Doe');\n    await expect(userRow).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.2667,
+      "recall": 0.8,
+      "f1": 0.4,
+      "gen_count": 15,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Admin creates a new user account', async ({ page }) => {\n    // Navigate to the admin login page\n    await page.goto('https://example.com/admin/login');\n\n    // Log in as admin\n    await page.fill('input[name=\"username\"]', 'adminUsername');\n    await page.fill('input[name=\"password\"]', 'adminPassword');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for navigation to the admin dashboard\n    await page.waitForNavigation();\n\n    // Navigate to the new user form\n    await page.click('text=Users');\n    await page.click('text=Add New User');\n\n    // Fill out the new user form\n    await page.fill('input[name=\"firstName\"]', 'John');\n    await page.fill('input[name=\"lastName\"]', 'Doe');\n    await page.fill('input[name=\"email\"]', 'john.doe@example.com');\n    await page.fill('input[name=\"password\"]', 'securePassword123');\n    await page.click('button[type=\"submit\"]');\n\n    // Wait for confirmation message\n    const confirmationMessage = await page.locator('.confirmation-message');\n    await expect(confirmationMessage).toBeVisible();\n    await expect(confirmationMessage).toHaveText('User created successfully');\n\n    // Optionally, verify the user is saved in the user list\n    await page.click('text=Users');\n    const userRow = await page.locator('text=John Doe');\n    await expect(userRow).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.2667,
+      "recall": 0.8,
+      "f1": 0.4,
+      "gen_count": 15,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Admin creates a new user account', async ({ page }) => {\n    // Navigate to the admin login page\n    await page.goto('https://example.com/admin/login');\n\n    // Log in as an admin\n    await page.fill('input[name=\"username\"]', 'adminUsername');\n    await page.fill('input[name=\"password\"]', 'adminPassword');\n    await page.click('button[type=\"submit\"]');\n\n    // Navigate to the new user form\n    await page.goto('https://example.com/admin/users/new');\n\n    // Fill out the new user form\n    await page.fill('input[name=\"firstName\"]', 'John');\n    await page.fill('input[name=\"lastName\"]', 'Doe');\n    await page.fill('input[name=\"email\"]', 'john.doe@example.com');\n    await page.fill('input[name=\"password\"]', 'securePassword123');\n    await page.click('button[type=\"submit\"]');\n\n    // Verify user is saved\n    await expect(page.locator('text=User created successfully')).toBeVisible();\n\n    // Optionally, verify the user is listed in the user management section\n    await page.goto('https://example.com/admin/users');\n    await expect(page.locator('text=John Doe')).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should create a new user successfully', async ({ page }) => {\n  await page.goto('/admin/users/new');\n  await page.fill('[data-testid=\"user-name\"]', 'Jane Doe');\n  await page.fill('[data-testid=\"user-email\"]', 'jane@example.com');\n  await page.selectOption('[data-testid=\"user-role\"]', 'editor');\n  await page.click('[data-testid=\"save-user\"]');\n  await expect(page.locator('[data-testid=\"toast-success\"]')).toContainText('User created');\n});",
+      "precision": 0.3636,
+      "recall": 0.8,
+      "f1": 0.5,
+      "gen_count": 11,
+      "ref_count": 5
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the website\n    await page.goto('https://example.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const keyword = 'laptop';\n    await searchBar.fill(keyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const results = await page.locator('.search-results');\n    await expect(results).toBeVisible();\n\n    // Check if results match the keyword\n    const resultItems = await results.locator('.result-item');\n    const resultCount = await resultItems.count();\n    \n    for (let i = 0; i < resultCount; i++) {\n        const resultText = await resultItems.nth(i).innerText();\n        expect(resultText.toLowerCase()).toContain(keyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('View order history', async ({ page }) => {\n    // Step 1: Navigate to the login page\n    await page.goto('https://example.com/login');\n\n    // Step 2: Log in as a registered user\n    await page.fill('input[name=\"username\"]', 'testuser');\n    await page.fill('input[name=\"password\"]', 'password123');\n    await page.click('button[type=\"submit\"]');\n\n    // Step 3: Navigate to the order history page\n    await page.goto('https://example.com/order-history');\n\n    // Step 4: Verify order history is accessible\n    await expect(page).toHaveURL('https://example.com/order-history');\n    await expect(page.locator('h1')).toHaveText('Order History');\n\n    // Step 5: Verify past orders are listed\n    const orders = await page.locator('.order-item');\n    await expect(orders).toHaveCountGreaterThan(0);\n\n    // Step 6: Click on the first order to view details\n    await orders.first().click();\n\n    // Step 7: Verify order details are viewable\n    await expect(page.locator('.order-details')).toBeVisible();\n    await expect(page.locator('.order-number')).toBeVisible();\n    await expect(page.locator('.order-date')).toBeVisible();\n    await expect(page.locator('.order-total')).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should display order history', async ({ page }) => {\n  await page.goto('/account/orders');\n  await expect(page.locator('[data-testid=\"order-list\"]')).toBeVisible();\n  const orders = page.locator('[data-testid=\"order-item\"]');\n  await expect(orders).toHaveCountGreaterThan(0);\n  await orders.first().click();\n  await expect(page.locator('[data-testid=\"order-detail\"]')).toBeVisible();\n});",
+      "precision": 0.1667,
+      "recall": 1.0,
+      "f1": 0.2857,
+      "gen_count": 6,
+      "ref_count": 1
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Add product to shopping cart', async ({ page }) => {\n    // Navigate to the product page\n    await page.goto('https://example.com/product-page');\n\n    // Check if the \"Add to Cart\" button is visible\n    const addToCartButton = await page.locator('button.add-to-cart');\n    await expect(addToCartButton).toBeVisible();\n\n    // Click the \"Add to Cart\" button\n    await addToCartButton.click();\n\n    // Verify that the cart count increments\n    const cartCount = await page.locator('.cart-count');\n    await expect(cartCount).toHaveText('1');\n\n    // Navigate to the cart page\n    await page.goto('https://example.com/cart');\n\n    // Check if the item appears in the cart\n    const cartItem = await page.locator('.cart-item');\n    await expect(cartItem).toBeVisible();\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should add product to cart', async ({ page }) => {\n  await page.goto('/products/1');\n  await page.click('[data-testid=\"add-to-cart\"]');\n  await expect(page.locator('[data-testid=\"cart-count\"]')).toContainText('1');\n  await page.goto('/cart');\n  await expect(page.locator('[data-testid=\"cart-item\"]')).toHaveCount(1);\n});",
+      "precision": 0.4,
+      "recall": 0.6667,
+      "f1": 0.5,
+      "gen_count": 5,
+      "ref_count": 3
+    },
+    {
+      "generated": "```javascript\nconst { test, expect } = require('@playwright/test');\n\ntest('Search for products by keyword', async ({ page }) => {\n    // Navigate to the website\n    await page.goto('https://example.com');\n\n    // Check if the search bar is visible\n    const searchBar = await page.locator('input[name=\"search\"]');\n    await expect(searchBar).toBeVisible();\n\n    // Perform a search\n    const keyword = 'laptop';\n    await searchBar.fill(keyword);\n    await searchBar.press('Enter');\n\n    // Wait for results to appear\n    const results = await page.locator('.search-results');\n    await expect(results).toBeVisible();\n\n    // Check if results match the keyword\n    const resultItems = await results.locator('.result-item');\n    const resultCount = await resultItems.count();\n    \n    for (let i = 0; i < resultCount; i++) {\n        const itemText = await resultItems.nth(i).innerText();\n        expect(itemText.toLowerCase()).toContain(keyword.toLowerCase());\n    }\n});\n```",
+      "reference": "const { test, expect } = require('@playwright/test');\n\ntest('should return results for keyword search', async ({ page }) => {\n  await page.goto('/products');\n  await page.fill('[data-testid=\"search-input\"]', 'laptop');\n  await page.click('[data-testid=\"search-btn\"]');\n  await expect(page.locator('[data-testid=\"product-list\"]')).toBeVisible();\n  const items = page.locator('[data-testid=\"product-item\"]');\n  await expect(items).toHaveCountGreaterThan(0);\n  await expect(items.first()).toContainText('laptop');\n});",
+      "precision": 0.3333,
+      "recall": 0.3333,
+      "f1": 0.3333,
+      "gen_count": 3,
+      "ref_count": 3
+    }
+  ]
+}

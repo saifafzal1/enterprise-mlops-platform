@@ -1,0 +1,389 @@
+{
+  "model": "mistral-7b",
+  "framework": "cypress",
+  "metrics": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "results": [
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 7
+    },
+    {
+      "generated": "",
+      "reference": "describe('Login', () => {\n  it('should login with valid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('user@example.com');\n    cy.get('[data-testid=\"password\"]').type('Password123!');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.url().should('include', '/dashboard');\n    cy.get('[data-testid=\"welcome-msg\"]').should('be.visible');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Password Reset', () => {\n  it('should send reset email for valid account', () => {\n    cy.visit('/forgot-password');\n    cy.get('[data-testid=\"email-input\"]').type('user@example.com');\n    cy.get('[data-testid=\"send-reset\"]').click();\n    cy.get('[data-testid=\"success-msg\"]').should('contain', 'Check your email');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 4
+    },
+    {
+      "generated": "",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 7
+    },
+    {
+      "generated": "",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 7
+    },
+    {
+      "generated": "",
+      "reference": "describe('Login Error', () => {\n  it('should show error on invalid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('wrong@example.com');\n    cy.get('[data-testid=\"password\"]').type('wrongpass');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.get('[data-testid=\"error-msg\"]').should('contain', 'Invalid credentials');\n    cy.url().should('include', '/login');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Password Reset', () => {\n  it('should send reset email for valid account', () => {\n    cy.visit('/forgot-password');\n    cy.get('[data-testid=\"email-input\"]').type('user@example.com');\n    cy.get('[data-testid=\"send-reset\"]').click();\n    cy.get('[data-testid=\"success-msg\"]').should('contain', 'Check your email');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 4
+    },
+    {
+      "generated": "",
+      "reference": "describe('Profile Update', () => {\n  it('should update profile information', () => {\n    cy.visit('/profile/edit');\n    cy.get('[data-testid=\"display-name\"]').clear().type('New Name');\n    cy.get('[data-testid=\"phone\"]').clear().type('+1234567890');\n    cy.get('[data-testid=\"save-profile\"]').click();\n    cy.get('[data-testid=\"profile-name\"]').should('contain', 'New Name');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Login', () => {\n  it('should login with valid credentials', () => {\n    cy.visit('/login');\n    cy.get('[data-testid=\"email\"]').type('user@example.com');\n    cy.get('[data-testid=\"password\"]').type('Password123!');\n    cy.get('[data-testid=\"submit\"]').click();\n    cy.url().should('include', '/dashboard');\n    cy.get('[data-testid=\"welcome-msg\"]').should('be.visible');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 7
+    },
+    {
+      "generated": "",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Checkout', () => {\n  it('should complete checkout with valid payment', () => {\n    cy.visit('/checkout');\n    cy.get('[data-testid=\"card-number\"]').type('4111111111111111');\n    cy.get('[data-testid=\"expiry\"]').type('12/26');\n    cy.get('[data-testid=\"cvv\"]').type('123');\n    cy.get('[data-testid=\"place-order\"]').click();\n    cy.get('[data-testid=\"order-confirmation\"]').should('be.visible');\n    cy.get('[data-testid=\"order-id\"]').should('not.be.empty');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 7
+    },
+    {
+      "generated": "",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Admin Create User', () => {\n  it('should create a new user successfully', () => {\n    cy.visit('/admin/users/new');\n    cy.get('[data-testid=\"user-name\"]').type('Jane Doe');\n    cy.get('[data-testid=\"user-email\"]').type('jane@example.com');\n    cy.get('[data-testid=\"user-role\"]').select('editor');\n    cy.get('[data-testid=\"save-user\"]').click();\n    cy.get('[data-testid=\"toast-success\"]').should('contain', 'User created');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    },
+    {
+      "generated": "",
+      "reference": "describe('Order History', () => {\n  it('should display order history', () => {\n    cy.visit('/account/orders');\n    cy.get('[data-testid=\"order-list\"]').should('be.visible');\n    cy.get('[data-testid=\"order-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"order-item\"]').first().click();\n    cy.get('[data-testid=\"order-detail\"]').should('be.visible');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Shopping Cart', () => {\n  it('should add product to cart', () => {\n    cy.visit('/products/1');\n    cy.get('[data-testid=\"add-to-cart\"]').click();\n    cy.get('[data-testid=\"cart-count\"]').should('contain', '1');\n    cy.visit('/cart');\n    cy.get('[data-testid=\"cart-item\"]').should('have.length', 1);\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 5
+    },
+    {
+      "generated": "",
+      "reference": "describe('Product Search', () => {\n  it('should return results for keyword search', () => {\n    cy.visit('/products');\n    cy.get('[data-testid=\"search-input\"]').type('laptop');\n    cy.get('[data-testid=\"search-btn\"]').click();\n    cy.get('[data-testid=\"product-list\"]').should('be.visible');\n    cy.get('[data-testid=\"product-item\"]').should('have.length.greaterThan', 0);\n    cy.get('[data-testid=\"product-item\"]').first().should('contain', 'laptop');\n  });\n});",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gen_count": 0,
+      "ref_count": 6
+    }
+  ]
+}

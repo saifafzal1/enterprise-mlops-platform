@@ -1,0 +1,516 @@
+{
+  "model_dir": "/Users/saif.afzal/Documents/enterprise-mlops-platform/models/agentic/phi3_cypress",
+  "framework": "cypress",
+  "metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "n_samples": 42,
+  "results": [
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 7,
+      "ref_count": 7,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 4,
+      "ref_count": 4,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.6667,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.8,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 7,
+      "ref_count": 7,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.7778,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 7,
+      "ref_count": 7,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.5882,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.8,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 4,
+      "ref_count": 4,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.6667,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 7,
+      "ref_count": 7,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 7,
+      "ref_count": 7,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.5882,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.8,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.8,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.5882,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 5,
+      "ref_count": 5,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 1.0,
+      "bmad_iters": 3
+    },
+    {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "gen_count": 6,
+      "ref_count": 6,
+      "errors": [
+        "missing_assertion"
+      ],
+      "corrected_f1": 0.9091,
+      "bmad_iters": 3
+    }
+  ]
+}
